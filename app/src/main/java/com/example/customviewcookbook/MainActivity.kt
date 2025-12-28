@@ -5,10 +5,11 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.customviewcookbook.databinding.ActivityMainBinding
+import kotlinx.coroutines.launch
 
 internal class MainActivity : AppCompatActivity() {
 
@@ -16,22 +17,100 @@ internal class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    private val viewModel: MainViewModel by lazy { MainViewModel(application) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
+        adjustSystemInsets()
+        initializeViewModel()
+        observeViewModel()
+    }
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+    private fun adjustSystemInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+
+            view.setPadding(
+                    systemBars.left,
+                    systemBars.top,
+                    systemBars.right,
+                    systemBars.bottom
+            )
+
             insets
         }
+    }
 
-        val banner = binding.bannerHighlight
-        banner.icon = AppCompatResources.getDrawable(this, R.drawable.ic_launcher_foreground)
-        banner.title = "Novo Título"
-        banner.description = "Sit totam omnis reiciendis voluptas qui dolore. Animi explicabo quod odio vitae assumenda consequuntur sed explicabo. Amet ut rerum aliquid corrupti incidunt voluptatem. Voluptates autem eveniet iusto officia possimus dolorem quod voluptatem. Minima aliquam nobis et qui ratione minus. Nulla fugit necessitatibus voluptas voluptas. Et id et nihil consequatur quae aut. Quis dolores nam provident nam earum ut."
-        banner.isError = true
-        banner.onCloseClickListener = { banner.visibility = View.GONE }
+    private fun observeViewModel() {
+        lifecycleScope.launch {
+            viewModel.state.collect { bannerState ->
+                when (bannerState) {
+                    is BannerState.InitialLoading -> onBannerInitialLoading()
+
+                    is BannerState.Loading -> onBannerLoading(
+                            current = bannerState.current,
+                            total = bannerState.total
+                    )
+
+                    is BannerState.Success -> onBannerSuccess()
+                    is BannerState.Error -> onBannerError()
+                }
+            }
+        }
+    }
+
+    private fun onBannerInitialLoading() {
+        binding.bannerHighlight.icon = AppCompatResources.getDrawable(
+                this,
+                R.drawable.ic_launcher_foreground
+        )
+
+        binding.bannerHighlight.title = "Iniciando a Contagem..."
+        binding.bannerHighlight.description = "A contagem começará em breve."
+        binding.bannerHighlight.isError = false
+    }
+
+    private fun onBannerLoading(current: Int, total: Int) {
+        binding.bannerHighlight.icon = AppCompatResources.getDrawable(
+                this,
+                R.drawable.ic_launcher_foreground
+        )
+
+        binding.bannerHighlight.title = "Contando..."
+        binding.bannerHighlight.description = "Item $current de $total"
+        binding.bannerHighlight.isError = false
+    }
+
+    private fun onBannerSuccess() {
+        binding.bannerHighlight.icon = AppCompatResources.getDrawable(
+                this,
+                R.drawable.ic_launcher_foreground
+        )
+
+        binding.bannerHighlight.title = "Concluído!"
+        binding.bannerHighlight.description = "A contagem terminou com sucesso."
+        binding.bannerHighlight.isError = false
+    }
+
+    private fun onBannerError() {
+        binding.bannerHighlight.icon = AppCompatResources.getDrawable(
+                this,
+                R.drawable.ic_launcher_foreground
+        )
+
+        binding.bannerHighlight.title = "Erro!"
+        binding.bannerHighlight.description = "Ocorreu um erro durante a contagem."
+
+        binding.bannerHighlight.onCloseClickListener = {
+            binding.bannerHighlight.visibility = View.GONE
+        }
+
+        binding.bannerHighlight.isError = true
+    }
+
+    private fun initializeViewModel() {
+        viewModel.startBannerCountUp(10)
     }
 }
