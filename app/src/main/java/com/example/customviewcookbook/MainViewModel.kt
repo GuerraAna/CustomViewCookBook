@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-internal class MainViewModel(
+internal class MainViewModel @JvmOverloads constructor(
     application: Application,
-    val useCase: MainUseCase = MainUseCase()
+    val counterUseCase: MainCounterUseCase = MainCounterUseCase()
 ) : AndroidViewModel(application) {
 
     private val _state = MutableStateFlow<BannerState>(BannerState.InitialLoading)
@@ -22,14 +22,14 @@ internal class MainViewModel(
     val state: StateFlow<BannerState> = _state.asStateFlow()
 
     /**
-     *
+     * Start the banner count up process
      */
-    fun startBannerCountUp(total: Int) {
+    fun startBannerCountUp() {
         viewModelScope.launch {
             delay(3000)
 
             try {
-                useCase.startCountUp(total).collect { (current, totalValue) ->
+                counterUseCase.startCountUp().collect { (current, totalValue) ->
                     // Emite um novo estado de Loading a cada contagem
                     _state.emit(BannerState.Loading(current, totalValue))
                 }

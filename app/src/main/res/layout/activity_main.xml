@@ -6,11 +6,11 @@
 	android:id="@+id/main"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@color/gray"
+	android:background="@color/dark_gray"
 	tools:context=".MainActivity">
 
 	<com.example.customviewcookbook.banner.BannerHighlightView
-		android:id="@+id/bannerHighlight"
+		android:id="@+id/banner_highlight"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_margin="16dp"
@@ -18,8 +18,8 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
 		tools:description="Descrição detalhada do banner highlight"
-		tools:icon="@android:drawable/ic_dialog_info"
-		tools:isError="false"
+		tools:hasCloseButton="false"
+		tools:hasProgressIndicator="true"
 		tools:title="Título do Banner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

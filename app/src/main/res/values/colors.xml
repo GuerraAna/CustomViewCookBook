@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<color name="black">#FF000000</color>
-	<color name="gray">#373737</color>
 	<color name="white">#FFFFFFFF</color>
 	<color name="red">#FF0000</color>
+	<color name="green">#00FF00</color>
+	<color name="blue">#0000FF</color>
+	<color name="orange">#FFA500</color>
+	<color name="yellow">#FFFF00</color>
+	<color name="light_gray">#FFAAAAAA</color>
+	<color name="dark_gray">#FF555555</color>
+
+	<array name="progress_colors">
+		<item>@color/blue</item>
+		<item>@color/green</item>
+		<item>@color/yellow</item>
+		<item>@color/orange</item>
+		<item>@color/red</item>
+	</array>
 </resources>

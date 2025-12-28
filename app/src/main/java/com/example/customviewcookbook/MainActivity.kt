@@ -5,8 +5,10 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.example.customviewcookbook.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
@@ -24,8 +26,7 @@ internal class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         adjustSystemInsets()
-        initializeViewModel()
-        observeViewModel()
+        setupViewModel()
     }
 
     private fun adjustSystemInsets() {
@@ -43,7 +44,9 @@ internal class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun observeViewModel() {
+    private fun setupViewModel() {
+        viewModel.startBannerCountUp()
+
         lifecycleScope.launch {
             viewModel.state.collect { bannerState ->
                 when (bannerState) {
@@ -62,55 +65,50 @@ internal class MainActivity : AppCompatActivity() {
     }
 
     private fun onBannerInitialLoading() {
-        binding.bannerHighlight.icon = AppCompatResources.getDrawable(
-                this,
-                R.drawable.ic_launcher_foreground
-        )
-
+        binding.bannerHighlight.icon = null
         binding.bannerHighlight.title = "Iniciando a Contagem..."
         binding.bannerHighlight.description = "A contagem começará em breve."
-        binding.bannerHighlight.isError = false
+        binding.bannerHighlight.hasProgressIndicator = true
     }
 
     private fun onBannerLoading(current: Int, total: Int) {
-        binding.bannerHighlight.icon = AppCompatResources.getDrawable(
-                this,
-                R.drawable.ic_launcher_foreground
-        )
-
+        binding.bannerHighlight.icon = null
         binding.bannerHighlight.title = "Contando..."
         binding.bannerHighlight.description = "Item $current de $total"
-        binding.bannerHighlight.isError = false
+        binding.bannerHighlight.hasCloseButton = false
+        binding.bannerHighlight.hasProgressIndicator = true
     }
 
     private fun onBannerSuccess() {
+        binding.bannerHighlight.hasProgressIndicator = false
+
         binding.bannerHighlight.icon = AppCompatResources.getDrawable(
-                this,
-                R.drawable.outline_check
+                /* context = */ this,
+                /* resId = */ R.drawable.outline_check
         )
 
+        binding.bannerHighlight.strokeColor = null
         binding.bannerHighlight.title = "Concluído!"
         binding.bannerHighlight.description = "A contagem terminou com sucesso."
-        binding.bannerHighlight.isError = false
+        binding.bannerHighlight.hasCloseButton = false
     }
 
     private fun onBannerError() {
+        binding.bannerHighlight.hasProgressIndicator = false
+        binding.bannerHighlight.onCloseClickListener = { binding.bannerHighlight.isVisible = true }
+
         binding.bannerHighlight.icon = AppCompatResources.getDrawable(
-                this,
-                R.drawable.outline_error
+                /* context = */ this,
+                /* resId = */ R.drawable.ic_outline_error
+        )
+
+        binding.bannerHighlight.strokeColor = ContextCompat.getColor(
+                /* context = */ this,
+                /* id = */ R.color.red
         )
 
         binding.bannerHighlight.title = "Ocorreu um erro!"
         binding.bannerHighlight.description = "Desculpe, ocorreu um erro durante a contagem."
-
-        binding.bannerHighlight.onCloseClickListener = {
-            binding.bannerHighlight.visibility = View.GONE
-        }
-
-        binding.bannerHighlight.isError = true
-    }
-
-    private fun initializeViewModel() {
-        viewModel.startBannerCountUp(10)
+        binding.bannerHighlight.hasCloseButton = true
     }
 }
