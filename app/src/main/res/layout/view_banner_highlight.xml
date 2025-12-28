@@ -32,7 +32,7 @@
 				android:indeterminate="true"
 				android:visibility="gone"
 				app:indicatorColor="@array/progress_colors"
-				app:indeterminateAnimationType="contiguous"
+				app:indeterminateAnimationType="disjoint"
 				tools:visibility="gone" />
 
 			<androidx.appcompat.widget.AppCompatImageView

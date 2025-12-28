@@ -87,12 +87,7 @@ class BannerHighlightView @JvmOverloads constructor(
     var onCloseClickListener: (() -> Unit)? = null
 
     init {
-        setupListeners()
         initializeArguments(attrs, defStyleAttr, defStyleRes)
-    }
-
-    private fun setupListeners() {
-        binding.closeButton.setOnClickListener { onCloseClickListener?.invoke() }
     }
 
     private fun initializeArguments(
@@ -156,13 +151,13 @@ class BannerHighlightView @JvmOverloads constructor(
     }
 
     private fun updateCloseButtonVisibility() {
+        binding.closeButton.setOnClickListener { onCloseClickListener?.invoke() }
         binding.closeButton.isVisible = hasCloseButton == true
     }
 
     private fun updateStrokeColor() {
-        binding.cardContainer.strokeColor = strokeColor?.let {
-            ContextCompat.getColor(context, it)
-        } ?: ContextCompat.getColor(context, R.color.white)
+        binding.cardContainer.strokeColor =
+            strokeColor ?: ContextCompat.getColor(context, R.color.white)
     }
 
     private fun updateProgressIndicator() {

@@ -1,7 +1,6 @@
 package com.example.customviewcookbook
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
@@ -95,18 +94,14 @@ internal class MainActivity : AppCompatActivity() {
 
     private fun onBannerError() {
         binding.bannerHighlight.hasProgressIndicator = false
-        binding.bannerHighlight.onCloseClickListener = { binding.bannerHighlight.isVisible = true }
+        binding.bannerHighlight.onCloseClickListener = { binding.bannerHighlight.isVisible = false }
 
         binding.bannerHighlight.icon = AppCompatResources.getDrawable(
                 /* context = */ this,
                 /* resId = */ R.drawable.ic_outline_error
         )
 
-        binding.bannerHighlight.strokeColor = ContextCompat.getColor(
-                /* context = */ this,
-                /* id = */ R.color.red
-        )
-
+        binding.bannerHighlight.strokeColor = ContextCompat.getColor(this, R.color.red)
         binding.bannerHighlight.title = "Ocorreu um erro!"
         binding.bannerHighlight.description = "Desculpe, ocorreu um erro durante a contagem."
         binding.bannerHighlight.hasCloseButton = true
