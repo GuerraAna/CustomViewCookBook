@@ -4,7 +4,7 @@
 	<string name="dolores_perferendis_description">Dolores perferendis laboriosam deleniti est illo rerum alias. Facere voluptate dolorum eum ut itaque repudiandae. Atque nam aut totam. Consequatur tempora sit autem rem id qui iusto. Qui ut nostrum voluptas quis.</string>
 	<string name="banner_initialize_counter_title">Iniciando a Contagem…</string>
 	<string name="banner_initialize_counter_description">A contagem começará em breve.</string>
-	<string name="banner_start_counter_title">Contando...</string>
+	<string name="banner_start_counter_title">Contando…</string>
 	<string name="banner_start_counter_description">Total de itens incluidos (%1$d/%2$d)</string>
 	<string name="banner_success_title">Concluído!</string>
 	<string name="banner_success_description">A contagem terminou com sucesso.</string>
