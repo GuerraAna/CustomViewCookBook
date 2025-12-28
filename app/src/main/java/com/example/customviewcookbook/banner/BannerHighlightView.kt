@@ -39,7 +39,7 @@ class BannerHighlightView @JvmOverloads constructor(
     /**
      *
      */
-    var title: String = context.getString(R.string.banner_title_test)
+    var title: String = context.getString(R.string.dolores_perferendis_title)
         set(value) {
             field = value
             updateTile()
@@ -48,7 +48,7 @@ class BannerHighlightView @JvmOverloads constructor(
     /**
      *
      */
-    var description: String = context.getString(R.string.banner_description_test)
+    var description: String = context.getString(R.string.dolores_perferendis_description)
         set(value) {
             field = value
             updateDescription()

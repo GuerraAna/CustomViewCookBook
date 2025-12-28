@@ -65,15 +65,20 @@ internal class MainActivity : AppCompatActivity() {
 
     private fun onBannerInitialLoading() {
         binding.bannerHighlight.icon = null
-        binding.bannerHighlight.title = "Iniciando a Contagem..."
-        binding.bannerHighlight.description = "A contagem começará em breve."
+        binding.bannerHighlight.title = getString(R.string.banner_initialize_counter_title)
+        binding.bannerHighlight.description = getString(
+                R.string.banner_initialize_counter_description
+        )
         binding.bannerHighlight.hasProgressIndicator = true
     }
 
     private fun onBannerLoading(current: Int, total: Int) {
-        binding.bannerHighlight.icon = null
-        binding.bannerHighlight.title = "Contando..."
-        binding.bannerHighlight.description = "Item $current de $total"
+        binding.bannerHighlight.title = getString(R.string.banner_start_counter_title)
+        binding.bannerHighlight.description = getString(
+                R.string.banner_start_counter_description,
+                current,
+                total
+        )
         binding.bannerHighlight.hasCloseButton = false
         binding.bannerHighlight.hasProgressIndicator = true
     }
@@ -87,8 +92,8 @@ internal class MainActivity : AppCompatActivity() {
         )
 
         binding.bannerHighlight.strokeColor = null
-        binding.bannerHighlight.title = "Concluído!"
-        binding.bannerHighlight.description = "A contagem terminou com sucesso."
+        binding.bannerHighlight.title = getString(R.string.banner_success_title)
+        binding.bannerHighlight.description = getString(R.string.banner_success_description)
         binding.bannerHighlight.hasCloseButton = false
     }
 
@@ -102,8 +107,8 @@ internal class MainActivity : AppCompatActivity() {
         )
 
         binding.bannerHighlight.strokeColor = ContextCompat.getColor(this, R.color.red)
-        binding.bannerHighlight.title = "Ocorreu um erro!"
-        binding.bannerHighlight.description = "Desculpe, ocorreu um erro durante a contagem."
+        binding.bannerHighlight.title = getString(R.string.banner_error_title)
+        binding.bannerHighlight.description = getString(R.string.banner_error_description)
         binding.bannerHighlight.hasCloseButton = true
     }
 }

@@ -1,5 +1,13 @@
 <resources>
 	<string name="app_name">CustomViewCookBook</string>
-	<string name="banner_title_test">Título do Banner</string>
-	<string name="banner_description_test">Dolores perferendis laboriosam deleniti est illo rerum alias. Facere voluptate dolorum eum ut itaque repudiandae. Atque nam aut totam. Consequatur tempora sit autem rem id qui iusto. Qui ut nostrum voluptas quis.</string>
+	<string name="dolores_perferendis_title">Dolores perferendis laboriosam deleniti</string>
+	<string name="dolores_perferendis_description">Dolores perferendis laboriosam deleniti est illo rerum alias. Facere voluptate dolorum eum ut itaque repudiandae. Atque nam aut totam. Consequatur tempora sit autem rem id qui iusto. Qui ut nostrum voluptas quis.</string>
+	<string name="banner_initialize_counter_title">Iniciando a Contagem…</string>
+	<string name="banner_initialize_counter_description">A contagem começará em breve.</string>
+	<string name="banner_start_counter_title">Contando...</string>
+	<string name="banner_start_counter_description">Total de itens incluidos (%1$d/%2$d)</string>
+	<string name="banner_success_title">Concluído!</string>
+	<string name="banner_success_description">A contagem terminou com sucesso.</string>
+	<string name="banner_error_title">Ocorreu um erro!</string>
+	<string name="banner_error_description">Desculpe, ocorreu um erro durante a contagem.</string>
 </resources>
