@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="BannerHighlight">
+		<attr name="icon" format="reference" />
+		<attr name="title" format="string" />
+		<attr name="description" format="string" />
+		<attr name="showCloseButton" format="boolean" />
+		<attr name="strokeColor" format="color" />
+	</declare-styleable>
+</resources>
