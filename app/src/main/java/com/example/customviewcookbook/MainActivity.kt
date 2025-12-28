@@ -86,7 +86,7 @@ internal class MainActivity : AppCompatActivity() {
     private fun onBannerSuccess() {
         binding.bannerHighlight.icon = AppCompatResources.getDrawable(
                 this,
-                R.drawable.ic_launcher_foreground
+                R.drawable.outline_check
         )
 
         binding.bannerHighlight.title = "Concluído!"
@@ -97,11 +97,11 @@ internal class MainActivity : AppCompatActivity() {
     private fun onBannerError() {
         binding.bannerHighlight.icon = AppCompatResources.getDrawable(
                 this,
-                R.drawable.ic_launcher_foreground
+                R.drawable.outline_error
         )
 
-        binding.bannerHighlight.title = "Erro!"
-        binding.bannerHighlight.description = "Ocorreu um erro durante a contagem."
+        binding.bannerHighlight.title = "Ocorreu um erro!"
+        binding.bannerHighlight.description = "Desculpe, ocorreu um erro durante a contagem."
 
         binding.bannerHighlight.onCloseClickListener = {
             binding.bannerHighlight.visibility = View.GONE
