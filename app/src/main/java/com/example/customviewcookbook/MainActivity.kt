@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -29,8 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         // Acessa a view através do binding
         val banner = binding.bannerHighlight
-
-        // Configura os textos
+        banner.setIcon(AppCompatResources.getDrawable(this, R.drawable.ic_launcher_foreground))
         banner.setTitle("Novo Título")
         banner.setDescription("Nova descrição")
         banner.setStrokeColor(ContextCompat.getColor(this, R.color.red))

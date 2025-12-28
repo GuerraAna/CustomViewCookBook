@@ -13,14 +13,13 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_margin="16dp"
-		app:description="Descrição detalhada do banner highlight"
-		app:icon="@android:drawable/ic_dialog_info"
-		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
-		app:showCloseButton="true"
-		app:strokeColor="@color/red"
-		app:title="Título do Banner" />
+		tools:description="Descrição detalhada do banner highlight"
+		tools:icon="@android:drawable/ic_dialog_info"
+		tools:showCloseButton="true"
+		tools:strokeColor="@color/red"
+		tools:title="Título do Banner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,9 +30,7 @@ class BannerHighlight @JvmOverloads constructor(
         attrs?.let { processAttributes(it, defStyleAttr) }
 
         // Configura listener do botão de fechar
-        binding.closeButton.setOnClickListener {
-            onCloseClickListener?.invoke()
-        }
+        binding.closeButton.setOnClickListener { onCloseClickListener?.invoke() }
     }
 
     private fun processAttributes(attrs: AttributeSet, defStyleAttr: Int) {
