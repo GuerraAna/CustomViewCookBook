@@ -10,16 +10,15 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.customviewcookbook.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+internal class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-        // Infla o layout usando ViewBinding
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
@@ -28,18 +27,11 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Acessa a view através do binding
         val banner = binding.bannerHighlight
-        banner.setIcon(AppCompatResources.getDrawable(this, R.drawable.ic_launcher_foreground))
-        banner.setTitle("Novo Título")
-        banner.setDescription("Nova descrição")
-        banner.setStrokeColor(ContextCompat.getColor(this, R.color.red))
-
-        // Define listener para o botão de fechar
-        banner.setCloseButtonVisibility(true)
-        banner.onCloseClickListener = {
-            banner.visibility = View.GONE
-            // Ou remova a view: (banner.parent as? ViewGroup)?.removeView(banner)
-        }
+        banner.icon = AppCompatResources.getDrawable(this, R.drawable.ic_launcher_foreground)
+        banner.title = "Novo Título"
+        banner.description = "Sit totam omnis reiciendis voluptas qui dolore. Animi explicabo quod odio vitae assumenda consequuntur sed explicabo. Amet ut rerum aliquid corrupti incidunt voluptatem. Voluptates autem eveniet iusto officia possimus dolorem quod voluptatem. Minima aliquam nobis et qui ratione minus. Nulla fugit necessitatibus voluptas voluptas. Et id et nihil consequatur quae aut. Quis dolores nam provident nam earum ut."
+        banner.isError = true
+        banner.onCloseClickListener = { banner.visibility = View.GONE }
     }
 }

@@ -4,7 +4,6 @@
 		<attr name="icon" format="reference" />
 		<attr name="title" format="string" />
 		<attr name="description" format="string" />
-		<attr name="showCloseButton" format="boolean" />
-		<attr name="strokeColor" format="color" />
+		<attr name="isError" format="boolean" />
 	</declare-styleable>
 </resources>
