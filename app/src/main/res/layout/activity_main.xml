@@ -22,4 +22,16 @@
 		tools:hasProgressIndicator="true"
 		tools:title="Título do Banner" />
 
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/items_list"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_margin="16dp"
+		android:visibility="gone"
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/banner_highlight"
+		tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

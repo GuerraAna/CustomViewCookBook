@@ -12,6 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import com.example.customviewcookbook.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 
+
+
 internal class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by lazy {
@@ -47,7 +49,7 @@ internal class MainActivity : AppCompatActivity() {
         viewModel.startBannerCountUp()
 
         lifecycleScope.launch {
-            viewModel.state.collect { bannerState ->
+            viewModel.bannerState.collect { bannerState ->
                 when (bannerState) {
                     is BannerState.Loading -> onBannerLoading(
                             current = bannerState.current,
@@ -57,6 +59,15 @@ internal class MainActivity : AppCompatActivity() {
                     is BannerState.Success -> onBannerSuccess()
                     is BannerState.Error -> onBannerError()
                 }
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.itemsList.collect { items ->
+                val itemsListAdapter = ItemsAdapter()
+                itemsListAdapter.submitList(items)
+                binding.itemsList.adapter = itemsListAdapter
+                binding.itemsList.isVisible = items.isNotEmpty()
             }
         }
     }

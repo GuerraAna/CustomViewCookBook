@@ -14,14 +14,22 @@ internal class MainViewModel @JvmOverloads constructor(
     val counterUseCase: MainCounterUseCase = MainCounterUseCase()
 ) : AndroidViewModel(application) {
 
-    private val _state = MutableStateFlow<BannerState>(
+    private val _bannerState = MutableStateFlow<BannerState>(
             BannerState.Loading(current = null, total = null)
     )
+
+    private var currentItemsList: List<String> = emptyList()
+    private val _itemsList = MutableStateFlow(currentItemsList)
 
     /**
      *
      */
-    val state: StateFlow<BannerState> = _state.asStateFlow()
+    val bannerState: StateFlow<BannerState> = _bannerState.asStateFlow()
+
+    /**
+     *
+     */
+    val itemsList: StateFlow<List<String>> = _itemsList.asStateFlow()
 
     /**
      * Start the banner count up process
@@ -31,14 +39,15 @@ internal class MainViewModel @JvmOverloads constructor(
             delay(3000)
 
             try {
-                counterUseCase.startCountUp().collect { (current, totalValue) ->
-                    // Emite um novo estado de Loading a cada contagem
-                    _state.emit(BannerState.Loading(current, totalValue))
+                counterUseCase.startCountUp().collect { (current, totalValue, item) ->
+                    _bannerState.emit(BannerState.Loading(current, totalValue))
+                    currentItemsList = currentItemsList + item
+                    _itemsList.emit(currentItemsList)
                 }
 
-                _state.emit(BannerState.Success)
+                _bannerState.emit(BannerState.Success)
             } catch (error: Throwable) {
-                _state.emit(BannerState.Error)
+                _bannerState.emit(BannerState.Error)
             }
         }
     }
