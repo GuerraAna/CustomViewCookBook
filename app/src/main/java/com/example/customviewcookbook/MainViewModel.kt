@@ -3,6 +3,7 @@ package com.example.customviewcookbook
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Job // Importe o Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,6 +21,7 @@ internal class MainViewModel @JvmOverloads constructor(
 
     private var currentItemsList: List<String> = emptyList()
     private val _itemsList = MutableStateFlow(currentItemsList)
+    private var bannerJob: Job? = null
 
     /**
      *
@@ -35,8 +37,10 @@ internal class MainViewModel @JvmOverloads constructor(
      * Start the banner count up process
      */
     fun startBannerCountUp() {
-        viewModelScope.launch {
-            delay(3000)
+        bannerJob?.cancel()
+
+        bannerJob = viewModelScope.launch {
+            delay(300)
 
             try {
                 counterUseCase.startCountUp().collect { (current, totalValue, item) ->
@@ -47,8 +51,21 @@ internal class MainViewModel @JvmOverloads constructor(
 
                 _bannerState.emit(BannerState.Success)
             } catch (error: Throwable) {
-                _bannerState.emit(BannerState.Error)
+                if (error !is kotlinx.coroutines.CancellationException) {
+                    _bannerState.emit(BannerState.Error)
+                }
             }
         }
+    }
+
+    /**
+     *
+     */
+    fun restartBannerCountUp() {
+        currentItemsList = emptyList()
+        _itemsList.value = currentItemsList
+        _bannerState.value = BannerState.Loading(current = null, total = null)
+
+        startBannerCountUp()
     }
 }

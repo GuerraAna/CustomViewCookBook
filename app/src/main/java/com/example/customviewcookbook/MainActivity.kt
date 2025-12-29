@@ -13,7 +13,6 @@ import com.example.customviewcookbook.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 
 
-
 internal class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by lazy {
@@ -27,6 +26,7 @@ internal class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         adjustSystemInsets()
+        setupListeners()
         setupViewModel()
     }
 
@@ -43,6 +43,10 @@ internal class MainActivity : AppCompatActivity() {
 
             insets
         }
+    }
+
+    private fun setupListeners() {
+        binding.restartFab.setOnClickListener { viewModel.restartBannerCountUp() }
     }
 
     private fun setupViewModel() {
