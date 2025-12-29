@@ -49,8 +49,6 @@ internal class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.state.collect { bannerState ->
                 when (bannerState) {
-                    is BannerState.InitialLoading -> onBannerInitialLoading()
-
                     is BannerState.Loading -> onBannerLoading(
                             current = bannerState.current,
                             total = bannerState.total
@@ -63,22 +61,23 @@ internal class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onBannerInitialLoading() {
-        binding.bannerHighlight.icon = null
-        binding.bannerHighlight.title = getString(R.string.banner_initialize_counter_title)
-        binding.bannerHighlight.description = getString(
-                R.string.banner_initialize_counter_description
-        )
-        binding.bannerHighlight.hasProgressIndicator = true
-    }
+    private fun onBannerLoading(current: Int?, total: Int?) {
+        val hasValidValues = current != null && total != null
 
-    private fun onBannerLoading(current: Int, total: Int) {
-        binding.bannerHighlight.title = getString(R.string.banner_start_counter_title)
-        binding.bannerHighlight.description = getString(
-                R.string.banner_start_counter_description,
-                current,
-                total
-        )
+        if (hasValidValues) {
+            binding.bannerHighlight.title = getString(R.string.banner_start_counter_title)
+            binding.bannerHighlight.description = getString(
+                    R.string.banner_start_counter_description,
+                    current,
+                    total
+            )
+        } else {
+            binding.bannerHighlight.title = getString(R.string.banner_initialize_counter_title)
+            binding.bannerHighlight.description = getString(
+                    R.string.banner_initialize_counter_description
+            )
+        }
+
         binding.bannerHighlight.hasCloseButton = false
         binding.bannerHighlight.hasProgressIndicator = true
     }

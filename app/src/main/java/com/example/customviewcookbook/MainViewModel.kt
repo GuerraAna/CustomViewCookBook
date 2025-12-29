@@ -14,7 +14,9 @@ internal class MainViewModel @JvmOverloads constructor(
     val counterUseCase: MainCounterUseCase = MainCounterUseCase()
 ) : AndroidViewModel(application) {
 
-    private val _state = MutableStateFlow<BannerState>(BannerState.InitialLoading)
+    private val _state = MutableStateFlow<BannerState>(
+            BannerState.Loading(current = null, total = null)
+    )
 
     /**
      *
