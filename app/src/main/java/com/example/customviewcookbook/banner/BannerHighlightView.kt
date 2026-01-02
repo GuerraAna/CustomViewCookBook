@@ -12,7 +12,8 @@ import com.example.customviewcookbook.R
 import com.example.customviewcookbook.databinding.ViewBannerHighlightBinding
 
 /**
- *
+ * A custom view that displays a banner highlight with an icon, title, description,
+ * optional close button, optional progress indicator, and customizable border stroke color.
  */
 class BannerHighlightView @JvmOverloads constructor(
     context: Context,
@@ -28,16 +29,18 @@ class BannerHighlightView @JvmOverloads constructor(
     )
 
     /**
-     *
+     * The icon drawable.
+     * @see [R.styleable.BannerHighlight_icon]
      */
     var icon: Drawable? = null
         set(value) {
             field = value
-            updateIcon(value)
+            updateIcon()
         }
 
     /**
-     *
+     * The title text.
+     * @see [R.styleable.BannerHighlight_title]
      */
     var title: String = context.getString(R.string.dolores_perferendis_title)
         set(value) {
@@ -46,7 +49,8 @@ class BannerHighlightView @JvmOverloads constructor(
         }
 
     /**
-     *
+     * The description text.
+     * @see [R.styleable.BannerHighlight_description]
      */
     var description: String = context.getString(R.string.dolores_perferendis_description)
         set(value) {
@@ -55,7 +59,8 @@ class BannerHighlightView @JvmOverloads constructor(
         }
 
     /**
-     *
+     * Whether to show the close button.
+     * @see [R.styleable.BannerHighlight_hasCloseButton]
      */
     var hasCloseButton: Boolean = false
         set(value) {
@@ -64,7 +69,8 @@ class BannerHighlightView @JvmOverloads constructor(
         }
 
     /**
-     *
+     * The color of the border stroke. If null, a default color will be used.
+     * @see [R.styleable.BannerHighlight_strokeColor]
      */
     var strokeColor: Int? = null
         set(value) {
@@ -73,7 +79,8 @@ class BannerHighlightView @JvmOverloads constructor(
         }
 
     /**
-     *
+     * Whether to show a progress indicator instead of the icon.
+     * @see [R.styleable.BannerHighlight_hasProgressIndicator]
      */
     var hasProgressIndicator: Boolean = false
         set(value) {
@@ -82,7 +89,7 @@ class BannerHighlightView @JvmOverloads constructor(
         }
 
     /**
-     *
+     * Callback to be invoked when the close button is clicked.
      */
     var onCloseClickListener: (() -> Unit)? = null
 
@@ -108,28 +115,28 @@ class BannerHighlightView @JvmOverloads constructor(
             } ?: { binding.icon.isVisible = false }
 
             banner.title = getString(
-                    R.styleable.BannerHighlight_title
+                    /* index = */ R.styleable.BannerHighlight_title
             ) ?: banner.title
 
             banner.description = getString(
-                    R.styleable.BannerHighlight_description
+                    /* index = */ R.styleable.BannerHighlight_description
             ) ?: banner.description
 
             banner.hasCloseButton = getBoolean(
-                    R.styleable.BannerHighlight_hasCloseButton,
-                    banner.hasCloseButton
+                    /* index = */ R.styleable.BannerHighlight_hasCloseButton,
+                    /* defValue = */ banner.hasCloseButton
             )
 
-            banner.strokeColor = banner.strokeColor?.let {
+            banner.strokeColor = banner.strokeColor?.let { color ->
                 getColor(
-                        R.styleable.BannerHighlight_strokeColor,
-                        it
+                        /* index = */ R.styleable.BannerHighlight_strokeColor,
+                        /* defValue = */ color
                 )
             }
 
             banner.hasProgressIndicator = getBoolean(
-                    R.styleable.BannerHighlight_hasProgressIndicator,
-                    banner.hasProgressIndicator
+                    /* index = */ R.styleable.BannerHighlight_hasProgressIndicator,
+                    /* defValue = */ banner.hasProgressIndicator
             )
         }
     }
@@ -144,9 +151,9 @@ class BannerHighlightView @JvmOverloads constructor(
         binding.description.contentDescription = description
     }
 
-    private fun updateIcon(drawable: Drawable?) {
+    private fun updateIcon() {
         binding.progressIndicator.isVisible = false
-        binding.icon.setImageDrawable(drawable)
+        binding.icon.setImageDrawable(icon)
         binding.icon.isVisible = true
     }
 
@@ -156,8 +163,8 @@ class BannerHighlightView @JvmOverloads constructor(
     }
 
     private fun updateStrokeColor() {
-        binding.cardContainer.strokeColor =
-            strokeColor ?: ContextCompat.getColor(context, R.color.white)
+        binding.cardContainer.strokeColor = strokeColor
+            ?: ContextCompat.getColor(context, R.color.white)
     }
 
     private fun updateProgressIndicator() {
