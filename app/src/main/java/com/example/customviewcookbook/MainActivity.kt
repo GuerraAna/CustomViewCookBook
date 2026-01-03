@@ -80,6 +80,10 @@ internal class MainActivity : AppCompatActivity() {
     private fun onBannerLoading(current: Int?, total: Int?) {
         val hasValidValues = current != null && total != null
 
+        if (!binding.bannerHighlight.isVisible) {
+            binding.bannerHighlight.isVisible = true
+        }
+
         if (hasValidValues) {
             binding.bannerHighlight.title = getString(R.string.banner_start_counter_title)
             binding.bannerHighlight.description = getString(
@@ -125,5 +129,7 @@ internal class MainActivity : AppCompatActivity() {
         binding.bannerHighlight.title = getString(R.string.banner_error_title)
         binding.bannerHighlight.description = getString(R.string.banner_error_description)
         binding.bannerHighlight.hasCloseButton = true
+
+        binding.itemsList.isVisible = false
     }
 }

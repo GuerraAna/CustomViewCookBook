@@ -76,6 +76,8 @@ internal class MainViewModel @JvmOverloads constructor(
         bannerJob?.cancel()
 
         bannerJob = viewModelScope.launch {
+            _itemsList.value = emptyList()
+            _bannerState.value = BannerState.Loading(current = null, total = null)
             delay(3000L)
             _bannerState.emit(BannerState.Error)
         }
