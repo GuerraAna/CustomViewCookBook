@@ -47,6 +47,7 @@ internal class MainActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         binding.restartFab.setOnClickListener { viewModel.restartBannerCountUp() }
+        binding.errorFab.setOnClickListener { viewModel.getBannerException() }
     }
 
     private fun setupViewModel() {

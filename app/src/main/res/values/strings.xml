@@ -11,4 +11,6 @@
 	<string name="banner_error_title">Ocorreu um erro!</string>
 	<string name="banner_error_description">Desculpe, ocorreu um erro durante a contagem. Tente novamente mais tarde ou entre em contato com o responsável por este produto.</string>
 	<string name="close_content_description">fechar</string>
+	<string name="simulate_counter_error">simular erro na contagem</string>
+	<string name="simulate_counter_start">simular reinicio da contagem</string>
 </resources>

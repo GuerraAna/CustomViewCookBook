@@ -40,7 +40,7 @@ internal class MainViewModel @JvmOverloads constructor(
         bannerJob?.cancel()
 
         bannerJob = viewModelScope.launch {
-            delay(300)
+            delay(3000L)
 
             try {
                 counterUseCase.startCountUp().collect { (current, totalValue, item) ->
@@ -67,5 +67,17 @@ internal class MainViewModel @JvmOverloads constructor(
         _bannerState.value = BannerState.Loading(current = null, total = null)
 
         startBannerCountUp()
+    }
+
+    /**
+     *
+     */
+    fun getBannerException() {
+        bannerJob?.cancel()
+
+        bannerJob = viewModelScope.launch {
+            delay(3000L)
+            _bannerState.emit(BannerState.Error)
+        }
     }
 }

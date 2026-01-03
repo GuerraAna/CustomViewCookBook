@@ -147,6 +147,8 @@ class BannerHighlightView @JvmOverloads constructor(
             binding.icon.setImageDrawable(icon)
             binding.icon.isVisible = true
         }
+
+        strokeColor = null
     }
 
     private fun updateCloseButtonVisibility() {
