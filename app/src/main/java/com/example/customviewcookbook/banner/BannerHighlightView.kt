@@ -1,6 +1,7 @@
 package com.example.customviewcookbook.banner
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -114,11 +115,14 @@ class BannerHighlightView @JvmOverloads constructor(
                 defStyleRes = defStyleRes
         ) {
             icon = getDrawable(R.styleable.BannerHighlight_icon) ?: icon
-            hasProgressIndicator =
-                getBoolean(R.styleable.BannerHighlight_hasProgressIndicator, hasProgressIndicator)
             title = getString(R.styleable.BannerHighlight_title) ?: title
             description = getString(R.styleable.BannerHighlight_description) ?: description
             hasCloseButton = getBoolean(R.styleable.BannerHighlight_hasCloseButton, hasCloseButton)
+
+            hasProgressIndicator = getBoolean(
+                    R.styleable.BannerHighlight_hasProgressIndicator,
+                    hasProgressIndicator
+            )
 
             if (hasValue(R.styleable.BannerHighlight_strokeColor)) {
                 strokeColor = getColor(R.styleable.BannerHighlight_strokeColor, 0)
@@ -127,15 +131,9 @@ class BannerHighlightView @JvmOverloads constructor(
     }
 
     private fun updateTitleAndDescription() {
-        // Update banner title
         binding.title.text = title
         ViewCompat.setAccessibilityHeading(binding.title, true)
-        binding.title.contentDescription = title
-
-        // Update banner description
         binding.description.text = description
-        binding.description.contentDescription = description
-
     }
 
     private fun updateIconAndProgressIndicator() {
@@ -147,8 +145,6 @@ class BannerHighlightView @JvmOverloads constructor(
             binding.icon.setImageDrawable(icon)
             binding.icon.isVisible = true
         }
-
-        strokeColor = null
     }
 
     private fun updateCloseButtonVisibility() {
@@ -161,12 +157,15 @@ class BannerHighlightView @JvmOverloads constructor(
             )
         }
 
-        binding.closeButton.isVisible = hasCloseButton == true
+        binding.closeButton.isVisible = hasCloseButton
     }
 
     private fun updateStrokeColor() {
-        binding.cardContainer.strokeColor = strokeColor
-            ?: ContextCompat.getColor(context, R.color.white)
+        binding.cardContainer.setStrokeColor(
+                ColorStateList.valueOf(
+                        strokeColor ?: ContextCompat.getColor(context, R.color.white)
+                )
+        )
     }
 
     private fun getButtonAccessibilityDelegate() = object : AccessibilityDelegateCompat() {

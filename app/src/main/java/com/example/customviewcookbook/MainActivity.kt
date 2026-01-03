@@ -79,6 +79,7 @@ internal class MainActivity : AppCompatActivity() {
 
     private fun onBannerLoading(current: Int?, total: Int?) {
         val hasValidValues = current != null && total != null
+        binding.bannerHighlight.strokeColor = null
 
         if (!binding.bannerHighlight.isVisible) {
             binding.bannerHighlight.isVisible = true
@@ -103,6 +104,7 @@ internal class MainActivity : AppCompatActivity() {
     }
 
     private fun onBannerSuccess() {
+        binding.bannerHighlight.strokeColor = null
         binding.bannerHighlight.hasProgressIndicator = false
 
         binding.bannerHighlight.icon = AppCompatResources.getDrawable(
@@ -110,7 +112,6 @@ internal class MainActivity : AppCompatActivity() {
                 /* resId = */ R.drawable.outline_check
         )
 
-        binding.bannerHighlight.strokeColor = null
         binding.bannerHighlight.title = getString(R.string.banner_success_title)
         binding.bannerHighlight.description = getString(R.string.banner_success_description)
         binding.bannerHighlight.hasCloseButton = false
