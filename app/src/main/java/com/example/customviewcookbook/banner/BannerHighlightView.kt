@@ -4,9 +4,14 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.core.view.isVisible
 import com.example.customviewcookbook.R
 import com.example.customviewcookbook.databinding.ViewBannerHighlightBinding
@@ -35,7 +40,17 @@ class BannerHighlightView @JvmOverloads constructor(
     var icon: Drawable? = null
         set(value) {
             field = value
-            updateIcon()
+            updateIconAndProgressIndicator()
+        }
+
+    /**
+     * Whether to show a progress indicator instead of the icon.
+     * @see [R.styleable.BannerHighlight_hasProgressIndicator]
+     */
+    var hasProgressIndicator: Boolean = false
+        set(value) {
+            field = value
+            updateIconAndProgressIndicator()
         }
 
     /**
@@ -45,7 +60,7 @@ class BannerHighlightView @JvmOverloads constructor(
     var title: String = context.getString(R.string.dolores_perferendis_title)
         set(value) {
             field = value
-            updateTile()
+            updateTitleAndDescription()
         }
 
     /**
@@ -55,7 +70,7 @@ class BannerHighlightView @JvmOverloads constructor(
     var description: String = context.getString(R.string.dolores_perferendis_description)
         set(value) {
             field = value
-            updateDescription()
+            updateTitleAndDescription()
         }
 
     /**
@@ -79,16 +94,6 @@ class BannerHighlightView @JvmOverloads constructor(
         }
 
     /**
-     * Whether to show a progress indicator instead of the icon.
-     * @see [R.styleable.BannerHighlight_hasProgressIndicator]
-     */
-    var hasProgressIndicator: Boolean = false
-        set(value) {
-            field = value
-            updateProgressIndicator()
-        }
-
-    /**
      * Callback to be invoked when the close button is clicked.
      */
     var onCloseClickListener: (() -> Unit)? = null
@@ -103,62 +108,57 @@ class BannerHighlightView @JvmOverloads constructor(
         defStyleRes: Int
     ) {
         context.withStyledAttributes(
-                attrs,
-                R.styleable.BannerHighlight,
-                defStyleAttr,
-                defStyleRes
+                set = attrs,
+                attrs = R.styleable.BannerHighlight,
+                defStyleAttr = defStyleAttr,
+                defStyleRes = defStyleRes
         ) {
-            val banner = this@BannerHighlightView
+            icon = getDrawable(R.styleable.BannerHighlight_icon) ?: icon
+            hasProgressIndicator =
+                getBoolean(R.styleable.BannerHighlight_hasProgressIndicator, hasProgressIndicator)
+            title = getString(R.styleable.BannerHighlight_title) ?: title
+            description = getString(R.styleable.BannerHighlight_description) ?: description
+            hasCloseButton = getBoolean(R.styleable.BannerHighlight_hasCloseButton, hasCloseButton)
 
-            banner.icon?.let { bannerIcon ->
-                banner.icon = getDrawable(R.styleable.BannerHighlight_icon)
-            } ?: { binding.icon.isVisible = false }
-
-            banner.title = getString(
-                    /* index = */ R.styleable.BannerHighlight_title
-            ) ?: banner.title
-
-            banner.description = getString(
-                    /* index = */ R.styleable.BannerHighlight_description
-            ) ?: banner.description
-
-            banner.hasCloseButton = getBoolean(
-                    /* index = */ R.styleable.BannerHighlight_hasCloseButton,
-                    /* defValue = */ banner.hasCloseButton
-            )
-
-            banner.strokeColor = banner.strokeColor?.let { color ->
-                getColor(
-                        /* index = */ R.styleable.BannerHighlight_strokeColor,
-                        /* defValue = */ color
-                )
+            if (hasValue(R.styleable.BannerHighlight_strokeColor)) {
+                strokeColor = getColor(R.styleable.BannerHighlight_strokeColor, 0)
             }
-
-            banner.hasProgressIndicator = getBoolean(
-                    /* index = */ R.styleable.BannerHighlight_hasProgressIndicator,
-                    /* defValue = */ banner.hasProgressIndicator
-            )
         }
     }
 
-    private fun updateTile() {
+    private fun updateTitleAndDescription() {
+        // Update banner title
         binding.title.text = title
+        ViewCompat.setAccessibilityHeading(binding.title, true)
         binding.title.contentDescription = title
-    }
 
-    private fun updateDescription() {
+        // Update banner description
         binding.description.text = description
         binding.description.contentDescription = description
+
     }
 
-    private fun updateIcon() {
-        binding.progressIndicator.isVisible = false
-        binding.icon.setImageDrawable(icon)
-        binding.icon.isVisible = true
+    private fun updateIconAndProgressIndicator() {
+        if (hasProgressIndicator) {
+            binding.icon.isVisible = false
+            binding.progressIndicator.isVisible = true
+        } else {
+            binding.progressIndicator.isVisible = false
+            binding.icon.setImageDrawable(icon)
+            binding.icon.isVisible = true
+        }
     }
 
     private fun updateCloseButtonVisibility() {
-        binding.closeButton.setOnClickListener { onCloseClickListener?.invoke() }
+        if (hasCloseButton) {
+            binding.closeButton.setOnClickListener { onCloseClickListener?.invoke() }
+
+            ViewCompat.setAccessibilityDelegate(
+                    /* v = */ binding.closeButton,
+                    /* delegate = */ getButtonAccessibilityDelegate()
+            )
+        }
+
         binding.closeButton.isVisible = hasCloseButton == true
     }
 
@@ -167,8 +167,15 @@ class BannerHighlightView @JvmOverloads constructor(
             ?: ContextCompat.getColor(context, R.color.white)
     }
 
-    private fun updateProgressIndicator() {
-        binding.icon.isVisible = false
-        binding.progressIndicator.isVisible = hasProgressIndicator == true
+    private fun getButtonAccessibilityDelegate() = object : AccessibilityDelegateCompat() {
+        override fun onInitializeAccessibilityNodeInfo(
+            host: View,
+            info: AccessibilityNodeInfoCompat
+        ) {
+            super.onInitializeAccessibilityNodeInfo(host, info)
+
+            info.contentDescription = context.getString(R.string.close_content_description)
+            info.className = Button::class.java.name
+        }
     }
 }

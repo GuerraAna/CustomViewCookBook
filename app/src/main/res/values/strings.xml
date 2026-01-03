@@ -9,5 +9,6 @@
 	<string name="banner_success_title">Concluído!</string>
 	<string name="banner_success_description">A contagem terminou com sucesso.</string>
 	<string name="banner_error_title">Ocorreu um erro!</string>
-	<string name="banner_error_description">Desculpe, ocorreu um erro durante a contagem.</string>
+	<string name="banner_error_description">Desculpe, ocorreu um erro durante a contagem. Tente novamente mais tarde ou entre em contato com o responsável por este produto.</string>
+	<string name="close_content_description">fechar</string>
 </resources>
