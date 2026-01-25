@@ -7,7 +7,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="@color/dark_gray"
-	tools:context=".banner.BannerActivity">
+	tools:context=".features.components.banner.BannerActivity">
 
 	<com.example.customviewcookbook.banner.BannerHighlightView
 		android:id="@+id/banner_highlight"

@@ -6,6 +6,11 @@
 	android:id="@+id/main"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".HomeActivity">
+	tools:context=".home.HomeActivity">
+
+	<com.google.android.material.card.MaterialCardView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintStart_toStartOf=""/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

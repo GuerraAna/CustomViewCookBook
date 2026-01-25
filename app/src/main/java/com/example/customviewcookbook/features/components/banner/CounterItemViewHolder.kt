@@ -1,4 +1,4 @@
-package com.example.customviewcookbook.banner
+package com.example.customviewcookbook.features.components.banner
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.customviewcookbook.databinding.CounterItemBinding

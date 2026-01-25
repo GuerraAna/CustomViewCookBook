@@ -15,7 +15,7 @@
 
 		<!--  Home Feature. Responsible to initialize the application.  -->
 		<activity
-			android:name=".HomeActivity"
+			android:name=".home.HomeActivity"
 			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -26,18 +26,18 @@
 
 		<!--  Banner Feature.  -->
 		<activity
-			android:name=".banner.BannerActivity"
+			android:name=".features.components.banner.BannerActivity"
 			android:exported="false" />
 
 		<!--  Intent Activities Feature.	-->
 		<activity
-			android:name=".FirstActivity"
+			android:name=".features.navigation.FirstActivity"
 			android:exported="false" />
 		<activity
-			android:name=".SecondActivity"
+			android:name=".features.navigation.SecondActivity"
 			android:exported="false" />
 		<activity
-			android:name=".ThirdActivity"
+			android:name=".features.navigation.ThirdActivity"
 			android:exported="false" />
 	</application>
 

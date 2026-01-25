@@ -1,4 +1,4 @@
-package com.example.customviewcookbook.banner
+package com.example.customviewcookbook.features.components.banner
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
