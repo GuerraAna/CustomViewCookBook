@@ -1,4 +1,4 @@
-package com.example.customviewcookbook
+package com.example.customviewcookbook.banner
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.flow
 . Se houver algum erro, devemos emitir um estado de erro apenas quando tentamos buscar novamente 5 vezes sem sucesso. Ai sim, mostramos o estado de erro corretamente. Enquanto isso, não, tentaremos buscar os dados novamente.
  */
 
-internal class MainCounterUseCase(
+internal class BannerCounterUseCase(
     val provideDelayMillis: Long = 1000
 ) {
 

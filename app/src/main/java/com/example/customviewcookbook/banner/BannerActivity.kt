@@ -1,4 +1,4 @@
-package com.example.customviewcookbook
+package com.example.customviewcookbook.banner
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -9,17 +9,18 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import com.example.customviewcookbook.databinding.ActivityMainBinding
+import com.example.customviewcookbook.R
+import com.example.customviewcookbook.databinding.ActivityBannerBinding
 import kotlinx.coroutines.launch
 
 
-internal class MainActivity : AppCompatActivity() {
+internal class BannerActivity : AppCompatActivity() {
 
-    private val binding: ActivityMainBinding by lazy {
-        ActivityMainBinding.inflate(layoutInflater)
+    private val binding: ActivityBannerBinding by lazy {
+        ActivityBannerBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: MainViewModel by lazy { MainViewModel(application) }
+    private val viewModel: BannerViewModel by lazy { BannerViewModel(application) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,10 +69,10 @@ internal class MainActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            viewModel.itemsList.collect { items ->
-                val itemsListAdapter = ItemsAdapter()
-                itemsListAdapter.submitList(items)
-                binding.itemsList.adapter = itemsListAdapter
+            viewModel.itemsListState.collect { items ->
+                val itemsCounterAdapter = CounterAdapter()
+                itemsCounterAdapter.submitList(items)
+                binding.itemsList.adapter = itemsCounterAdapter
                 binding.itemsList.isVisible = items.isNotEmpty()
             }
         }

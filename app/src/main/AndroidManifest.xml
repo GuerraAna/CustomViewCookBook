@@ -12,8 +12,10 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/Theme.CustomViewCookBook">
+
+		<!--  Home Feature. Responsible to initialize the application.  -->
 		<activity
-			android:name=".MainActivity"
+			android:name=".HomeActivity"
 			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -21,6 +23,22 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+
+		<!--  Banner Feature.  -->
+		<activity
+			android:name=".banner.BannerActivity"
+			android:exported="false" />
+
+		<!--  Intent Activities Feature.	-->
+		<activity
+			android:name=".FirstActivity"
+			android:exported="false" />
+		<activity
+			android:name=".SecondActivity"
+			android:exported="false" />
+		<activity
+			android:name=".ThirdActivity"
+			android:exported="false" />
 	</application>
 
 </manifest>

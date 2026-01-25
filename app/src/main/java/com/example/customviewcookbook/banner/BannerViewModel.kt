@@ -1,8 +1,9 @@
-package com.example.customviewcookbook
+package com.example.customviewcookbook.banner
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job // Importe o Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,9 +11,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-internal class MainViewModel @JvmOverloads constructor(
+internal class BannerViewModel @JvmOverloads constructor(
     application: Application,
-    val counterUseCase: MainCounterUseCase = MainCounterUseCase()
+    val counterUseCase: BannerCounterUseCase = BannerCounterUseCase()
 ) : AndroidViewModel(application) {
 
     private val _bannerState = MutableStateFlow<BannerState>(
@@ -20,7 +21,7 @@ internal class MainViewModel @JvmOverloads constructor(
     )
 
     private var currentItemsList: List<String> = emptyList()
-    private val _itemsList = MutableStateFlow(currentItemsList)
+    private val _itemsListState: MutableStateFlow<List<String>> = MutableStateFlow(currentItemsList)
     private var bannerJob: Job? = null
 
     /**
@@ -31,7 +32,7 @@ internal class MainViewModel @JvmOverloads constructor(
     /**
      *
      */
-    val itemsList: StateFlow<List<String>> = _itemsList.asStateFlow()
+    val itemsListState: StateFlow<List<String>> = _itemsListState.asStateFlow()
 
     /**
      * Start the banner count up process
@@ -46,12 +47,12 @@ internal class MainViewModel @JvmOverloads constructor(
                 counterUseCase.startCountUp().collect { (current, totalValue, item) ->
                     _bannerState.emit(BannerState.Loading(current, totalValue))
                     currentItemsList = currentItemsList + item
-                    _itemsList.emit(currentItemsList)
+                    _itemsListState.emit(currentItemsList)
                 }
 
                 _bannerState.emit(BannerState.Success)
             } catch (error: Throwable) {
-                if (error !is kotlinx.coroutines.CancellationException) {
+                if (error !is CancellationException) {
                     _bannerState.emit(BannerState.Error)
                 }
             }
@@ -63,7 +64,7 @@ internal class MainViewModel @JvmOverloads constructor(
      */
     fun restartBannerCountUp() {
         currentItemsList = emptyList()
-        _itemsList.value = currentItemsList
+        _itemsListState.value = currentItemsList
         _bannerState.value = BannerState.Loading(current = null, total = null)
 
         startBannerCountUp()
@@ -76,7 +77,7 @@ internal class MainViewModel @JvmOverloads constructor(
         bannerJob?.cancel()
 
         bannerJob = viewModelScope.launch {
-            _itemsList.value = emptyList()
+            _itemsListState.value = emptyList()
             _bannerState.value = BannerState.Loading(current = null, total = null)
             delay(3000L)
             _bannerState.emit(BannerState.Error)
