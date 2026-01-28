@@ -2,9 +2,9 @@
 <com.google.android.material.card.MaterialCardView
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:layout_margin="8dp"
 	app:cardCornerRadius="8dp"
 	app:cardElevation="2dp">
 
@@ -17,9 +17,9 @@
 			android:id="@+id/imageView"
 			android:layout_width="48dp"
 			android:layout_height="48dp"
-			android:src="@drawable/bank_icon"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+			app:layout_constraintTop_toTopOf="parent"
+			android:src="@drawable/bank_icon" />
 
 		<TextView
 			android:id="@+id/titleTextView"

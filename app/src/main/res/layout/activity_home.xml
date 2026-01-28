@@ -39,9 +39,25 @@
 			android:layout_height="wrap_content"
 			android:layout_marginTop="16dp"
 			android:orientation="vertical"
+			android:visibility="gone"
 			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 			tools:itemCount="10"
-			tools:listitem="@layout/features_card_item" />
+			tools:listitem="@layout/features_card_item"
+			tools:visibility="gone" />
+
+		<com.google.android.material.progressindicator.CircularProgressIndicator
+			android:id="@+id/progress_indicator"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_marginEnd="8dp"
+			android:importantForAccessibility="no"
+			android:indeterminate="true"
+			android:visibility="gone"
+			app:indeterminateAnimationType="disjoint"
+			app:indicatorColor="@array/progress_colors"
+			app:indicatorSize="24dp"
+			tools:visibility="visible" />
 
 	</LinearLayout>
 

@@ -9,7 +9,7 @@
 	android:background="@color/dark_gray"
 	tools:context=".features.components.banner.BannerActivity">
 
-	<com.example.customviewcookbook.banner.BannerHighlightView
+	<com.example.customviewcookbook.features.components.banner.BannerHighlightView
 		android:id="@+id/banner_highlight"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
