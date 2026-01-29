@@ -11,27 +11,33 @@ import androidx.lifecycle.lifecycleScope
 import com.example.customviewcookbook.databinding.ActivityHomeBinding
 import kotlinx.coroutines.launch
 import androidx.core.net.toUri
+import com.example.customviewcookbook.home.FeaturesAdapter.FeatureClickListener
 
-internal class HomeActivity : AppCompatActivity() {
+internal class HomeActivity : AppCompatActivity(), FeatureClickListener {
 
     private val binding: ActivityHomeBinding by lazy {
         ActivityHomeBinding.inflate(layoutInflater)
     }
 
-    private val featuresAdapter by lazy { FeaturesAdapter() }
+    private val featuresAdapter by lazy { FeaturesAdapter(this) }
 
     private val viewModel: HomeViewModel by lazy { HomeViewModel(application) }
+
+    override fun onFeatureClick(feature: Feature) {
+        val intent = Intent(this, feature.activity)
+        startActivity(intent)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         enableEdgeToEdge()
-        setupWindoInsets()
+        setupWindowInsets()
         setupListeners()
         initializeViewModel()
     }
 
-    private fun setupWindoInsets() {
+    private fun setupWindowInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

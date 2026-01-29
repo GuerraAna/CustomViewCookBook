@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.customviewcookbook.databinding.FeaturesCardItemBinding
 
-internal class FeaturesAdapter() : ListAdapter<Feature, FeaturesViewHolder>(FeatureDiffCallback()) {
+internal class FeaturesAdapter(
+        val listener: FeatureClickListener
+) : ListAdapter<Feature, FeaturesViewHolder>(FeatureDiffCallback()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -25,7 +27,7 @@ internal class FeaturesAdapter() : ListAdapter<Feature, FeaturesViewHolder>(Feat
         holder: FeaturesViewHolder,
         position: Int
     ) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), listener)
     }
 
     private class FeatureDiffCallback : DiffUtil.ItemCallback<Feature>() {
@@ -36,5 +38,9 @@ internal class FeaturesAdapter() : ListAdapter<Feature, FeaturesViewHolder>(Feat
         override fun areContentsTheSame(oldItem: Feature, newItem: Feature): Boolean {
             return oldItem.name == newItem.name
         }
+    }
+
+    internal interface FeatureClickListener {
+        fun onFeatureClick(feature: Feature)
     }
 }

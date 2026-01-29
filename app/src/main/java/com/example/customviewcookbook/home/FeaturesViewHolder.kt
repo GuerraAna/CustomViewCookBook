@@ -1,6 +1,5 @@
 package com.example.customviewcookbook.home
 
-import android.R.attr.resource
 import androidx.recyclerview.widget.RecyclerView
 import com.example.customviewcookbook.databinding.FeaturesCardItemBinding
 
@@ -8,7 +7,11 @@ internal class FeaturesViewHolder(
     private val binding: FeaturesCardItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(feature: Feature) {
+    fun bind(feature: Feature, listener: FeaturesAdapter.FeatureClickListener) {
+
+        binding.root.setOnClickListener {
+            listener.onFeatureClick(feature)
+        }
 
 //        binding.imageView.setImageDrawable(resource)
 //        binding.titleTextView
