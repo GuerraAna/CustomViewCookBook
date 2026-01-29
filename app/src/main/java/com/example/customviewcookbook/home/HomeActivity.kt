@@ -1,7 +1,9 @@
 package com.example.customviewcookbook.home
 
 import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,7 +13,12 @@ import androidx.lifecycle.lifecycleScope
 import com.example.customviewcookbook.databinding.ActivityHomeBinding
 import kotlinx.coroutines.launch
 import androidx.core.net.toUri
-import com.example.customviewcookbook.home.FeaturesAdapter.FeatureClickListener
+import androidx.recyclerview.widget.RecyclerView
+import com.example.customviewcookbook.R
+import com.example.customviewcookbook.features.item.Feature
+import com.example.customviewcookbook.features.item.FeaturesAdapter
+import com.example.customviewcookbook.features.item.FeaturesResponse
+import com.example.customviewcookbook.features.item.FeaturesAdapter.FeatureClickListener
 
 internal class HomeActivity : AppCompatActivity(), FeatureClickListener {
 
@@ -23,8 +30,8 @@ internal class HomeActivity : AppCompatActivity(), FeatureClickListener {
 
     private val viewModel: HomeViewModel by lazy { HomeViewModel(application) }
 
-    override fun onFeatureClick(feature: Feature) {
-        val intent = Intent(this, feature.activity)
+    override fun onFeatureClick(activityClass: Class<out AppCompatActivity>) {
+        val intent = Intent(this, activityClass)
         startActivity(intent)
     }
 
@@ -86,5 +93,27 @@ internal class HomeActivity : AppCompatActivity(), FeatureClickListener {
         featuresAdapter.submitList(features)
         binding.featuresList.adapter = featuresAdapter
         binding.featuresList.isVisible = true
+
+        val spacing = resources.getDimensionPixelSize(R.dimen.spacing_medium)
+        binding.featuresList.addItemDecoration(SpacingItemDecoration(spacing))
+    }
+}
+
+class SpacingItemDecoration(private val spacing: Int) : RecyclerView.ItemDecoration() {
+
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
+        outRect.left = spacing
+        outRect.right = spacing
+        outRect.bottom = spacing
+
+        // Adiciona espaçamento no topo apenas do primeiro item
+        if (parent.getChildAdapterPosition(view) == 0) {
+            outRect.top = spacing
+        }
     }
 }

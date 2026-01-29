@@ -1,13 +1,14 @@
-package com.example.customviewcookbook.home
+package com.example.customviewcookbook.features.item
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.customviewcookbook.databinding.FeaturesCardItemBinding
 
 internal class FeaturesAdapter(
-        val listener: FeatureClickListener
+    val listener: FeatureClickListener
 ) : ListAdapter<Feature, FeaturesViewHolder>(FeatureDiffCallback()) {
 
     override fun onCreateViewHolder(
@@ -41,6 +42,6 @@ internal class FeaturesAdapter(
     }
 
     internal interface FeatureClickListener {
-        fun onFeatureClick(feature: Feature)
+        fun onFeatureClick(feature: Class<out AppCompatActivity>)
     }
 }
