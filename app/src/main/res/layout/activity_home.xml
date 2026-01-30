@@ -7,13 +7,12 @@
 	android:layout_height="match_parent"
 	tools:context=".home.HomeActivity">
 
-	<LinearLayout
+	<androidx.constraintlayout.widget.ConstraintLayout
 		android:id="@+id/content_container"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
-		android:layout_marginHorizontal="16dp"
-		android:layout_marginTop="16dp"
-		android:orientation="vertical"
+		android:layout_marginHorizontal="24dp"
+		android:layout_marginTop="24dp"
 		app:layout_constraintBottom_toTopOf="@id/navigation_container"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
@@ -23,15 +22,21 @@
 			android:id="@+id/title"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Titulo do conteúdo da tela."
-			android:textSize="24sp" />
+			android:text="@string/home_title"
+			android:textSize="24sp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
 		<com.google.android.material.textview.MaterialTextView
 			android:id="@+id/description"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="Descrição do conteúdo da tela."
-			android:textSize="16sp" />
+			android:textSize="16sp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/title" />
 
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/features_list"
@@ -41,6 +46,9 @@
 			android:orientation="vertical"
 			android:visibility="gone"
 			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/description"
 			tools:itemCount="10"
 			tools:listitem="@layout/features_card_item"
 			tools:visibility="gone" />
@@ -57,9 +65,13 @@
 			app:indeterminateAnimationType="disjoint"
 			app:indicatorColor="@array/progress_colors"
 			app:indicatorSize="24dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/description"
 			tools:visibility="visible" />
 
-	</LinearLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
 
 	<LinearLayout
 		android:id="@+id/navigation_container"

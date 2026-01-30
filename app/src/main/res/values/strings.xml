@@ -13,4 +13,7 @@
 	<string name="close_content_description">fechar</string>
 	<string name="simulate_counter_error">simular erro na contagem</string>
 	<string name="simulate_counter_start">simular reinicio da contagem</string>
+	<string name="go_to_second_screen">Ir para a segunda tela</string>
+	<string name="input_value_text">Digite um valor…</string>
+	<string name="home_title">Titulo do conteúdo da tela.</string>
 </resources>
