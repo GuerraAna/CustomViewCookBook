@@ -1,5 +1,7 @@
 package com.example.customviewcookbook.features.navigation
 
+import android.app.ComponentCaller
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,21 @@ internal class FirstActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         setupWindowInsets()
+        setupListeners()
+    }
+
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?,
+        caller: ComponentCaller
+    ) {
+        super.onActivityResult(requestCode, resultCode, data, caller)
+        val isFromSecondActivity = 123
+
+        if (requestCode == isFromSecondActivity) {
+            binding.title.text = data?.getStringExtra("segunda_tela")
+        }
     }
 
     private fun setupWindowInsets() {
@@ -26,6 +43,15 @@ internal class FirstActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+    }
+
+    private fun setupListeners() {
+        binding.button.setOnClickListener {
+            // Go to SecondActivity
+            val intent = SecondActivity.createIntent(this)
+            val requestCode = 123
+            startActivityForResult(intent, requestCode)
         }
     }
 }

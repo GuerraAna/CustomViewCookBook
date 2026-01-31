@@ -8,4 +8,27 @@
 	android:layout_height="match_parent"
 	tools:context=".features.navigation.ThirdActivity">
 
+	<com.google.android.material.textfield.TextInputEditText
+		android:id="@+id/input_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="24dp"
+		android:layout_marginTop="14dp"
+		android:hint="@string/input_value_text"
+		app:layout_constraintBottom_toTopOf="@id/continue_button"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<androidx.appcompat.widget.AppCompatButton
+		android:id="@+id/continue_button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="16dp"
+		android:text="Confirmar e voltar"
+		android:textAllCaps="false"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

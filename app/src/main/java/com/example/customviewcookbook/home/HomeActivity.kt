@@ -111,7 +111,6 @@ class SpacingItemDecoration(private val spacing: Int) : RecyclerView.ItemDecorat
         outRect.right = spacing
         outRect.bottom = spacing
 
-        // Adiciona espaçamento no topo apenas do primeiro item
         if (parent.getChildAdapterPosition(view) == 0) {
             outRect.top = spacing
         }
