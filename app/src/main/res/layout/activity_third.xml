@@ -8,6 +8,17 @@
 	android:layout_height="match_parent"
 	tools:context=".features.navigation.ThirdActivity">
 
+	<com.google.android.material.appbar.MaterialToolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/light_gray"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:navigationIcon="@drawable/ic_arrow_left"
+		app:title="Terceira Tela" />
+
 	<com.google.android.material.textfield.TextInputEditText
 		android:id="@+id/input_text"
 		android:layout_width="match_parent"
@@ -19,6 +30,28 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
+
+	<androidx.appcompat.widget.AppCompatTextView
+		android:id="@+id/first_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="16dp"
+		android:layout_marginTop="8dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/input_text"
+		tools:text="@string/third_first_text" />
+
+	<androidx.appcompat.widget.AppCompatTextView
+		android:id="@+id/second_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="16dp"
+		android:layout_marginTop="8dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/first_text"
+		tools:text="@string/third_second_text" />
 
 	<androidx.appcompat.widget.AppCompatButton
 		android:id="@+id/continue_button"

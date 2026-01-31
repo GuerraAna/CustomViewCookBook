@@ -8,6 +8,17 @@
 	android:layout_height="match_parent"
 	tools:context=".features.navigation.FirstActivity">
 
+	<com.google.android.material.appbar.MaterialToolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/light_gray"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:navigationIcon="@drawable/ic_arrow_left"
+		app:title="Primeira Tela" />
+
 	<androidx.appcompat.widget.LinearLayoutCompat
 		android:id="@+id/content"
 		android:layout_width="match_parent"
@@ -19,8 +30,16 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
+		<com.google.android.material.textfield.TextInputEditText
+			android:id="@+id/input_text"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="24dp"
+			android:layout_marginTop="14dp"
+			android:hint="@string/input_value_text" />
+
 		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/title"
+			android:id="@+id/text_result"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginHorizontal="24dp"
@@ -28,7 +47,7 @@
 			android:gravity="center"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			tools:text="Primeiro texto" />
+			tools:text="Texto total" />
 
 	</androidx.appcompat.widget.LinearLayoutCompat>
 

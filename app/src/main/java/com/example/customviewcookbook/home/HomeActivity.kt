@@ -30,8 +30,8 @@ internal class HomeActivity : AppCompatActivity(), FeatureClickListener {
 
     private val viewModel: HomeViewModel by lazy { HomeViewModel(application) }
 
-    override fun onFeatureClick(activityClass: Class<out AppCompatActivity>) {
-        val intent = Intent(this, activityClass)
+    override fun onFeatureClick(feature: Class<out AppCompatActivity>) {
+        val intent = Intent(this, feature)
         startActivity(intent)
     }
 

@@ -4,11 +4,11 @@ import android.app.ComponentCaller
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.customviewcookbook.R
 import com.example.customviewcookbook.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {
@@ -17,12 +17,19 @@ class SecondActivity : AppCompatActivity() {
         ActivitySecondBinding.inflate(layoutInflater)
     }
 
+    private val firstText: String by lazy {
+        intent.getStringExtra(Extras.FIRST_TEXT).orEmpty()
+    }
+
+    private var thirdText: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
         setupWindowInsets()
         setupListeners()
+        setupFirstText()
     }
 
     override fun onActivityResult(
@@ -32,37 +39,93 @@ class SecondActivity : AppCompatActivity() {
         caller: ComponentCaller
     ) {
         super.onActivityResult(requestCode, resultCode, data, caller)
+        setupTextResult(requestCode, data)
+    }
 
-        if (requestCode == 123) {
-            binding.title.text = data?.getStringExtra("terceira_tela")
+    private fun setupFirstText() {
+        binding.firstText.text = firstText
+    }
+
+    private fun setupTextResult(
+        requestCode: Int,
+        data: Intent?
+    ) {
+        if (requestCode == RequestCodes.NAVIGATION_FLOW) {
+            thirdText = data?.getStringExtra(ExtrasResultCode.THIRD_TEXT).orEmpty()
+            binding.thirdText.text = thirdText
         }
     }
 
     private fun setupWindowInsets() {
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+
+            v.setPadding(
+                    /* left = */ systemBars.left,
+                    /* top = */ systemBars.top,
+                    /* right = */ systemBars.right,
+                    /* bottom = */ systemBars.bottom
+            )
+
             insets
         }
     }
 
     private fun setupListeners() {
-        binding.toolbar.setNavigationOnClickListener {
-            setResult(
-                    123,
-                    Intent().apply {
-                        putExtra("segunda_tela","${binding.inputText.text.toString()} | ${binding.title.text}")
-                    }
-            )
+        onBackPressedDispatcher.addCallback { goBackToFirstActivity() }
+        binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
+        binding.button.setOnClickListener { goToThirdActivity() }
+    }
 
-            finish()
-        }
+    private fun goBackToFirstActivity() {
+        setResult(
+                ResultCodes.NAVIGATION_FLOW,
+                Intent().apply {
+                    val secondText = binding.inputText.text.toString()
 
-        binding.button.setOnClickListener {
-            val intent = ThirdActivity.createIntent(this)
-            val requestCode = 123
-            startActivityForResult(intent, requestCode)
-        }
+                    putExtra(
+                            ExtrasResultCode.SECOND_TEXT,
+                            if (secondText == "") null else secondText
+                    )
+
+                    putExtra(
+                            ExtrasResultCode.THIRD_TEXT,
+                            thirdText
+                    )
+                }
+        )
+
+        finish()
+    }
+
+    private fun goToThirdActivity() {
+        val firstText = binding.firstText.text.toString()
+        val secondText = binding.inputText.text.toString()
+
+        val intent = ThirdActivity.createIntent(
+                context = this,
+                firstText = firstText,
+                secondText = secondText
+        )
+
+        startActivityForResult(intent, RequestCodes.NAVIGATION_FLOW)
+    }
+
+    private object RequestCodes {
+        const val NAVIGATION_FLOW = 123
+    }
+
+    private object ResultCodes {
+        const val NAVIGATION_FLOW = 123
+    }
+
+    private object Extras {
+        const val FIRST_TEXT = "firstText"
+    }
+
+    private object ExtrasResultCode {
+        const val SECOND_TEXT = "second_text"
+        const val THIRD_TEXT = "third_text"
     }
 
     companion object {
@@ -70,9 +133,14 @@ class SecondActivity : AppCompatActivity() {
         /**
          * Creates an [Intent] for [SecondActivity].
          */
-        fun createIntent(context: Context): Intent = Intent(
+        fun createIntent(
+            context: Context,
+            firstText: String
+        ): Intent = Intent(
                 context,
                 SecondActivity::class.java
-        )
+        ).apply {
+            putExtra(Extras.FIRST_TEXT, firstText)
+        }
     }
 }
