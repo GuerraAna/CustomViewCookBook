@@ -1,6 +1,7 @@
 package com.example.customviewcookbook.features.components.banner
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
@@ -11,16 +12,20 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.example.customviewcookbook.R
 import com.example.customviewcookbook.databinding.ActivityBannerBinding
+import com.example.customviewcookbook.features.components.banner.list.CounterAdapter
+import com.example.customviewcookbook.features.components.banner.list.CounterAdapter.CounterItemListener
 import kotlinx.coroutines.launch
 
 
-internal class BannerActivity : AppCompatActivity() {
+internal class BannerActivity : AppCompatActivity(), CounterItemListener {
 
     private val binding: ActivityBannerBinding by lazy {
         ActivityBannerBinding.inflate(layoutInflater)
     }
 
     private val viewModel: BannerViewModel by lazy { BannerViewModel(application) }
+
+    private val itemsCounterAdapter = CounterAdapter(listener = this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +41,10 @@ internal class BannerActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 
             view.setPadding(
-                    systemBars.left,
-                    systemBars.top,
-                    systemBars.right,
-                    systemBars.bottom
+                    /* left = */ systemBars.left,
+                    /* top = */ systemBars.top,
+                    /* right = */ systemBars.right,
+                    /* bottom = */ systemBars.bottom
             )
 
             insets
@@ -70,7 +75,6 @@ internal class BannerActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             viewModel.itemsListState.collect { items ->
-                val itemsCounterAdapter = CounterAdapter()
                 itemsCounterAdapter.submitList(items)
                 binding.itemsList.adapter = itemsCounterAdapter
                 binding.itemsList.isVisible = items.isNotEmpty()
@@ -133,5 +137,9 @@ internal class BannerActivity : AppCompatActivity() {
         binding.bannerHighlight.hasCloseButton = true
 
         binding.itemsList.isVisible = false
+    }
+
+    override fun onCounterItemClick(item: String) {
+        Toast.makeText(this, item, Toast.LENGTH_SHORT).show()
     }
 }
