@@ -5,6 +5,7 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import com.example.customviewcookbook.R
 import com.example.customviewcookbook.databinding.CustomFooterBinding
@@ -15,20 +16,15 @@ import com.example.customviewcookbook.databinding.CustomFooterBinding
 internal class CustomFooterView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    private val binding: CustomFooterBinding =
-        CustomFooterBinding.inflate(LayoutInflater.from(context), this, true)
-
-    /**
-     * @see R.styleable.CustomFooterView_footerText
-     */
-    var footerText: String? = null
-        set(value) {
-            field = value
-            setFooterText()
-        }
+    private val binding: CustomFooterBinding = CustomFooterBinding.inflate(
+        /* inflater = */ LayoutInflater.from(context),
+        /* parent = */ this,
+        /* attachToParent = */ true
+    )
 
     /**
      * @see R.styleable.CustomFooterView_secondaryButtonText
@@ -37,6 +33,15 @@ internal class CustomFooterView @JvmOverloads constructor(
         set(value) {
             field = value
             setSecondaryButtonText()
+        }
+
+    /**
+     *
+     */
+    var listeners: CustomFooterListeners? = null
+        set(value) {
+            field = value
+            setListeners()
         }
 
     /**
@@ -49,49 +54,24 @@ internal class CustomFooterView @JvmOverloads constructor(
         }
 
     init {
-        LayoutInflater.from(context).inflate(
-            /* resource = */ R.layout.custom_footer,
-            /* root = */ this,
-            /* attachToRoot = */ true
-        )
-
-        orientation = VERTICAL
-
-        context.theme.obtainStyledAttributes(
-            /* set = */ attrs,
-            /* attrs = */ R.styleable.CustomFooterView,
-            /* defStyleAttr = */ 0,
-            /* defStyleRes = */ 0
-        ).apply {
+        context.withStyledAttributes(
+            set = attrs,
+            attrs = R.styleable.CustomFooterView,
+            defStyleAttr = defStyleAttr,
+            defStyleRes = defStyleRes
+        ) {
             setupStyledAttributesView()
         }
     }
 
     private fun TypedArray.setupStyledAttributesView() {
-        try {
-            binding.footerText.text = getString(
-                R.styleable.CustomFooterView_footerText
-            ) ?: footerText
+        secondaryButtonText = getString(
+            R.styleable.CustomFooterView_secondaryButtonText
+        ) ?: secondaryButtonText
 
-            binding.footerSecondaryAction.text = getString(
-                R.styleable.CustomFooterView_secondaryButtonText
-            ) ?: secondaryButtonText
-
-            binding.footerMainAction.text = getString(
-                R.styleable.CustomFooterView_mainButtonText
-            ) ?: mainButtonText
-        } finally {
-            recycle()
-        }
-    }
-
-    private fun setFooterText() {
-        footerText?.let {
-            binding.footerText.text = footerText
-            binding.footerText.isVisible = true
-        } ?: run {
-            binding.footerText.isVisible = false
-        }
+        mainButtonText = getString(
+            R.styleable.CustomFooterView_mainButtonText
+        ) ?: mainButtonText
     }
 
     private fun setSecondaryButtonText() {
@@ -110,5 +90,26 @@ internal class CustomFooterView @JvmOverloads constructor(
         } ?: run {
             binding.footerMainAction.isVisible = false
         }
+    }
+
+    private fun setListeners() {
+        binding.footerSecondaryAction.setOnClickListener { listeners?.onSecondaryActionClicked() }
+        binding.footerMainAction.setOnClickListener { listeners?.onMainActionClicked() }
+    }
+
+    /**
+     *
+     */
+    interface CustomFooterListeners {
+
+        /**
+         *
+         */
+        fun onSecondaryActionClicked()
+
+        /**
+         *
+         */
+        fun onMainActionClicked()
     }
 }

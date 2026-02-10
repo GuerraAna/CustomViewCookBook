@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,12 +16,19 @@ import kotlinx.coroutines.launch
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.customviewcookbook.R
+import com.example.customviewcookbook.features.components.button.CustomFooterView
 import com.example.customviewcookbook.features.item.Feature
 import com.example.customviewcookbook.features.item.FeaturesAdapter
 import com.example.customviewcookbook.features.item.FeaturesResponse
 import com.example.customviewcookbook.features.item.FeaturesAdapter.FeatureClickListener
 
-internal class HomeActivity : AppCompatActivity(), FeatureClickListener {
+/**
+ *
+ */
+internal class HomeActivity :
+    AppCompatActivity(),
+    FeatureClickListener,
+    CustomFooterView.CustomFooterListeners {
 
     private val binding: ActivityHomeBinding by lazy {
         ActivityHomeBinding.inflate(layoutInflater)
@@ -32,6 +40,16 @@ internal class HomeActivity : AppCompatActivity(), FeatureClickListener {
 
     override fun onFeatureClick(feature: Class<out AppCompatActivity>) {
         val intent = Intent(this, feature)
+        startActivity(intent)
+    }
+
+    override fun onSecondaryActionClicked() {
+        Toast.makeText(this, "Secondary action clicked", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onMainActionClicked() {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = "https://developer.android.com/jetpack/compose/documentation".toUri()
         startActivity(intent)
     }
 
@@ -53,11 +71,8 @@ internal class HomeActivity : AppCompatActivity(), FeatureClickListener {
     }
 
     private fun setupListeners() {
-        binding.materialDocBtn.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = "https://developer.android.com/jetpack/compose/documentation".toUri()
-            startActivity(intent)
-        }
+        binding.footer.listeners = this
+        binding.footer.mainButtonText = "Abrir a documentação do Material"
     }
 
     private fun initializeViewModel() {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="BannerHighlight">
+    <declare-styleable name="BannerHighlightView">
         <attr name="icon" format="reference" />
         <attr name="title" format="string" />
         <attr name="description" format="string" />
@@ -10,7 +10,6 @@
     </declare-styleable>
 
     <declare-styleable name="CustomFooterView">
-        <attr name="footerText" format="string" />
         <attr name="secondaryButtonText" format="string" />
         <attr name="mainButtonText" format="string" />
     </declare-styleable>

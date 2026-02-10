@@ -2,6 +2,7 @@ package com.example.customviewcookbook.features.components.banner
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -29,14 +30,14 @@ class BannerHighlightView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     private val binding: ViewBannerHighlightBinding = ViewBannerHighlightBinding.inflate(
-            /* inflater = */ LayoutInflater.from(context),
-            /* parent = */ this,
-            /* attachToParent = */ true
+        /* inflater = */ LayoutInflater.from(context),
+        /* parent = */ this,
+        /* attachToParent = */ true
     )
 
     /**
      * The icon drawable.
-     * @see [R.styleable.BannerHighlight_icon]
+     * @see [R.styleable.BannerHighlightView_icon]
      */
     var icon: Drawable? = null
         set(value) {
@@ -46,7 +47,7 @@ class BannerHighlightView @JvmOverloads constructor(
 
     /**
      * Whether to show a progress indicator instead of the icon.
-     * @see [R.styleable.BannerHighlight_hasProgressIndicator]
+     * @see [R.styleable.BannerHighlightView_hasProgressIndicator]
      */
     var hasProgressIndicator: Boolean = false
         set(value) {
@@ -56,7 +57,7 @@ class BannerHighlightView @JvmOverloads constructor(
 
     /**
      * The title text.
-     * @see [R.styleable.BannerHighlight_title]
+     * @see [R.styleable.BannerHighlightView_title]
      */
     var title: String = context.getString(R.string.dolores_perferendis_title)
         set(value) {
@@ -66,7 +67,7 @@ class BannerHighlightView @JvmOverloads constructor(
 
     /**
      * The description text.
-     * @see [R.styleable.BannerHighlight_description]
+     * @see [R.styleable.BannerHighlightView_description]
      */
     var description: String = context.getString(R.string.dolores_perferendis_description)
         set(value) {
@@ -76,7 +77,7 @@ class BannerHighlightView @JvmOverloads constructor(
 
     /**
      * Whether to show the close button.
-     * @see [R.styleable.BannerHighlight_hasCloseButton]
+     * @see [R.styleable.BannerHighlightView_hasCloseButton]
      */
     var hasCloseButton: Boolean = false
         set(value) {
@@ -86,7 +87,7 @@ class BannerHighlightView @JvmOverloads constructor(
 
     /**
      * The color of the border stroke. If null, a default color will be used.
-     * @see [R.styleable.BannerHighlight_strokeColor]
+     * @see [R.styleable.BannerHighlightView_strokeColor]
      */
     var strokeColor: Int? = null
         set(value) {
@@ -100,34 +101,31 @@ class BannerHighlightView @JvmOverloads constructor(
     var onCloseClickListener: (() -> Unit)? = null
 
     init {
-        initializeArguments(attrs, defStyleAttr, defStyleRes)
+        context.withStyledAttributes(
+            set = attrs,
+            attrs = R.styleable.BannerHighlightView,
+            defStyleAttr = defStyleAttr,
+            defStyleRes = defStyleRes
+        ) {
+            setupStyledAttributesView()
+        }
     }
 
-    private fun initializeArguments(
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) {
-        context.withStyledAttributes(
-                set = attrs,
-                attrs = R.styleable.BannerHighlight,
-                defStyleAttr = defStyleAttr,
-                defStyleRes = defStyleRes
-        ) {
-            icon = getDrawable(R.styleable.BannerHighlight_icon) ?: icon
-            title = getString(R.styleable.BannerHighlight_title) ?: title
-            description = getString(R.styleable.BannerHighlight_description) ?: description
-            hasCloseButton = getBoolean(R.styleable.BannerHighlight_hasCloseButton, hasCloseButton)
+    private fun TypedArray.setupStyledAttributesView() {
+        icon = getDrawable(R.styleable.BannerHighlightView_icon) ?: icon
+        title = getString(R.styleable.BannerHighlightView_title) ?: title
+        description = getString(R.styleable.BannerHighlightView_description) ?: description
+        hasCloseButton = getBoolean(R.styleable.BannerHighlightView_hasCloseButton, hasCloseButton)
 
-            hasProgressIndicator = getBoolean(
-                    R.styleable.BannerHighlight_hasProgressIndicator,
-                    hasProgressIndicator
-            )
+        hasProgressIndicator = getBoolean(
+            R.styleable.BannerHighlightView_hasProgressIndicator,
+            hasProgressIndicator
+        )
 
-            if (hasValue(R.styleable.BannerHighlight_strokeColor)) {
-                strokeColor = getColor(R.styleable.BannerHighlight_strokeColor, 0)
-            }
+        if (hasValue(R.styleable.BannerHighlightView_strokeColor)) {
+            strokeColor = getColor(R.styleable.BannerHighlightView_strokeColor, 0)
         }
+
     }
 
     private fun updateTitleAndDescription() {
@@ -152,8 +150,8 @@ class BannerHighlightView @JvmOverloads constructor(
             binding.closeButton.setOnClickListener { onCloseClickListener?.invoke() }
 
             ViewCompat.setAccessibilityDelegate(
-                    /* v = */ binding.closeButton,
-                    /* delegate = */ getButtonAccessibilityDelegate()
+                /* v = */ binding.closeButton,
+                /* delegate = */ getButtonAccessibilityDelegate()
             )
         }
 
@@ -162,9 +160,9 @@ class BannerHighlightView @JvmOverloads constructor(
 
     private fun updateStrokeColor() {
         binding.cardContainer.setStrokeColor(
-                ColorStateList.valueOf(
-                        strokeColor ?: ContextCompat.getColor(context, R.color.white)
-                )
+            ColorStateList.valueOf(
+                strokeColor ?: ContextCompat.getColor(context, R.color.white)
+            )
         )
     }
 
