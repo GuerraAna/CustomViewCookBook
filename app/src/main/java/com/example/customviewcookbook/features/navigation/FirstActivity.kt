@@ -79,7 +79,7 @@ internal class FirstActivity : AppCompatActivity() {
     private fun setupListeners() {
         onBackPressedDispatcher.addCallback { goBackToHomeActivity() }
         binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
-        binding.button.setOnClickListener { goToSecondActivity() }
+        binding.button.mainButtonListener = { goToSecondActivity() }
     }
 
     private fun goBackToHomeActivity() {

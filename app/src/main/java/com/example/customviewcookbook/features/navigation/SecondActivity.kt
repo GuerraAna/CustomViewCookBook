@@ -74,7 +74,7 @@ class SecondActivity : AppCompatActivity() {
     private fun setupListeners() {
         onBackPressedDispatcher.addCallback { goBackToFirstActivity() }
         binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
-        binding.button.setOnClickListener { goToThirdActivity() }
+        binding.button.mainButtonListener = { goToThirdActivity() }
     }
 
     private fun goBackToFirstActivity() {

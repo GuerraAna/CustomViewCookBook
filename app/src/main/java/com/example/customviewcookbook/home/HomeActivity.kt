@@ -27,8 +27,7 @@ import com.example.customviewcookbook.features.item.FeaturesAdapter.FeatureClick
  */
 internal class HomeActivity :
     AppCompatActivity(),
-    FeatureClickListener,
-    CustomFooterView.CustomFooterListeners {
+    FeatureClickListener {
 
     private val binding: ActivityHomeBinding by lazy {
         ActivityHomeBinding.inflate(layoutInflater)
@@ -40,16 +39,6 @@ internal class HomeActivity :
 
     override fun onFeatureClick(feature: Class<out AppCompatActivity>) {
         val intent = Intent(this, feature)
-        startActivity(intent)
-    }
-
-    override fun onSecondaryActionClicked() {
-        Toast.makeText(this, "Secondary action clicked", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onMainActionClicked() {
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = "https://developer.android.com/jetpack/compose/documentation".toUri()
         startActivity(intent)
     }
 
@@ -71,8 +60,14 @@ internal class HomeActivity :
     }
 
     private fun setupListeners() {
-        binding.footer.listeners = this
+        binding.footer.mainButtonListener = { onMainActionClicked() }
         binding.footer.mainButtonText = "Abrir a documentação do Material"
+    }
+
+    private fun onMainActionClicked() {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = "https://developer.android.com/jetpack/compose/documentation".toUri()
+        startActivity(intent)
     }
 
     private fun initializeViewModel() {

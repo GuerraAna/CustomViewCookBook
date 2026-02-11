@@ -38,10 +38,19 @@ internal class CustomFooterView @JvmOverloads constructor(
     /**
      *
      */
-    var listeners: CustomFooterListeners? = null
+    var secondaryListener: (() -> Unit)? = null
         set(value) {
             field = value
-            setListeners()
+            setSecondaryListener()
+        }
+
+    /**
+     *
+     */
+    var mainButtonListener: (() -> Unit)? = null
+        set(value) {
+            field = value
+            setMainButtonListener()
         }
 
     /**
@@ -92,24 +101,11 @@ internal class CustomFooterView @JvmOverloads constructor(
         }
     }
 
-    private fun setListeners() {
-        binding.footerSecondaryAction.setOnClickListener { listeners?.onSecondaryActionClicked() }
-        binding.footerMainAction.setOnClickListener { listeners?.onMainActionClicked() }
+    private fun setMainButtonListener() {
+        binding.footerMainAction.setOnClickListener { mainButtonListener?.invoke() }
     }
 
-    /**
-     *
-     */
-    interface CustomFooterListeners {
-
-        /**
-         *
-         */
-        fun onSecondaryActionClicked()
-
-        /**
-         *
-         */
-        fun onMainActionClicked()
+    private fun setSecondaryListener() {
+        binding.footerSecondaryAction.setOnClickListener { secondaryListener?.invoke() }
     }
 }

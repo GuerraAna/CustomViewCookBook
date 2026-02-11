@@ -54,7 +54,8 @@ internal class ThirdActivity : AppCompatActivity() {
     private fun setupListeners() {
         onBackPressedDispatcher.addCallback { goBackToSecondActivity() }
         binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
-        binding.continueButton.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+        binding.continueButton.mainButtonListener = { onBackPressedDispatcher.onBackPressed() }
+
     }
 
     private fun goBackToSecondActivity() {

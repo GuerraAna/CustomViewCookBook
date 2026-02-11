@@ -72,13 +72,12 @@
 
 	</androidx.appcompat.widget.LinearLayoutCompat>
 
-	<androidx.appcompat.widget.AppCompatButton
+	<com.example.customviewcookbook.features.components.button.CustomFooterView
 		android:id="@+id/button"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_margin="16dp"
-		android:text="@string/continue_to_third_screen"
-		android:textAllCaps="false"
+        app:mainButtonText="@string/continue_to_third_screen"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent" />
