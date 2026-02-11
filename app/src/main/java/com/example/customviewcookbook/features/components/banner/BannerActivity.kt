@@ -32,6 +32,7 @@ internal class BannerActivity : AppCompatActivity(), CounterItemListener {
         enableEdgeToEdge()
         setContentView(binding.root)
         adjustSystemInsets()
+        setupToolbar()
         setupListeners()
         setupViewModel()
     }
@@ -49,6 +50,10 @@ internal class BannerActivity : AppCompatActivity(), CounterItemListener {
 
             insets
         }
+    }
+
+    private fun setupToolbar() {
+        binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
     }
 
     private fun setupListeners() {

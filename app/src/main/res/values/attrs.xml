@@ -5,7 +5,7 @@
         <attr name="title" format="string" />
         <attr name="description" format="string" />
         <attr name="hasCloseButton" format="boolean" />
-        <attr name="hasRightButton" format="boolean" />
+        <attr name="hasRightIcon" format="boolean" />
         <attr name="strokeColor" format="color" />
         <attr name="hasProgressIndicator" format="boolean" />
     </declare-styleable>

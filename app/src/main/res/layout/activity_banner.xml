@@ -1,67 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/main"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@color/dark_gray"
-	tools:context=".features.components.banner.BannerActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_gray"
+    tools:context=".features.components.banner.BannerActivity">
 
-	<com.example.customviewcookbook.features.components.banner.BannerHighlightView
-		android:id="@+id/banner_highlight"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_margin="16dp"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		tools:description="Descrição detalhada do banner highlight"
-		tools:hasCloseButton="false"
-		tools:hasProgressIndicator="true"
-		tools:title="Título do Banner" />
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_left"
+        tools:title="Tela do banner com lista" />
 
-	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/items_list"
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_margin="16dp"
-		android:visibility="gone"
-		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/banner_highlight"
-		tools:visibility="visible" />
+    <com.example.customviewcookbook.features.components.banner.BannerHighlightView
+        android:id="@+id/banner_highlight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:description="Descrição detalhada do banner highlight"
+        tools:hasCloseButton="false"
+        tools:hasProgressIndicator="true"
+        tools:title="Título do Banner" />
 
-	<androidx.appcompat.widget.LinearLayoutCompat
-		android:id="@+id/float_button_container"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:orientation="vertical"
-		android:paddingEnd="16dp"
-		android:paddingBottom="16dp"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		tools:ignore="RtlSymmetry">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/items_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/banner_highlight"
+        tools:visibility="visible" />
 
-		<com.google.android.material.floatingactionbutton.FloatingActionButton
-			android:id="@+id/restart_fab"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginBottom="8dp"
-			android:contentDescription="@string/simulate_counter_start"
-			android:importantForAccessibility="yes"
-			app:srcCompat="@android:drawable/ic_menu_rotate" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/float_button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RtlSymmetry">
 
-		<com.google.android.material.floatingactionbutton.FloatingActionButton
-			android:id="@+id/error_fab"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:contentDescription="@string/simulate_counter_error"
-			android:importantForAccessibility="yes"
-			app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/restart_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/simulate_counter_start"
+            android:importantForAccessibility="yes"
+            app:srcCompat="@android:drawable/ic_menu_rotate" />
 
-	</androidx.appcompat.widget.LinearLayoutCompat>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/error_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/simulate_counter_error"
+            android:importantForAccessibility="yes"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

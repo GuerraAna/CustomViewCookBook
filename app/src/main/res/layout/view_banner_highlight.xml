@@ -100,23 +100,23 @@
                 android:visibility="gone"
                 app:icon="@drawable/ic_close"
                 app:iconTint="@color/black"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="gone" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/right_button"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/right_icon"
                 style="@style/Widget.Material3.Button.IconButton.Filled"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:importantForAccessibility="yes"
+                android:src="@drawable/ic_arrow_right"
                 android:visibility="gone"
-                app:icon="@drawable/ic_arrow_right"
                 app:iconTint="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="visible" />
 

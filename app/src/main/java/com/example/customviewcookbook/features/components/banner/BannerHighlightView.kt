@@ -87,9 +87,9 @@ class BannerHighlightView @JvmOverloads constructor(
 
     /**
      * Whether to show the close button.
-     * @see [R.styleable.BannerHighlightView_hasRightButton]
+     * @see [R.styleable.BannerHighlightView_hasRightIcon]
      */
-    var hasRightButton: Boolean = false
+    var hasRightIcon: Boolean = false
         set(value) {
             field = value
             updateRightButtonVisibility()
@@ -174,11 +174,7 @@ class BannerHighlightView @JvmOverloads constructor(
     }
 
     private fun updateRightButtonVisibility() {
-        if (hasRightButton) {
-            binding.rightButton.setOnClickListener { onCloseClickListener?.invoke() }
-        }
-
-        binding.rightButton.isVisible = hasRightButton
+        binding.rightIcon.isVisible = hasRightIcon
     }
 
     private fun updateStrokeColor() {
