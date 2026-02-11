@@ -13,5 +13,6 @@ internal class FeaturesViewHolder(
         val featureDetails = feature.featureDetails
         binding.banner.title = featureDetails.name
         binding.banner.description = featureDetails.description
+        binding.banner.hasRightButton = true
     }
 }
