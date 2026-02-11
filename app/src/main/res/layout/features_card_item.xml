@@ -1,49 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	app:cardCornerRadius="8dp"
-	app:cardElevation="2dp">
-
-	<androidx.constraintlayout.widget.ConstraintLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:padding="16dp">
-
-		<ImageView
-			android:id="@+id/imageView"
-			android:layout_width="48dp"
-			android:layout_height="48dp"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			tools:src="@drawable/bank_icon" />
-
-		<TextView
-			android:id="@+id/name"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="16dp"
-			android:textAppearance="?attr/textAppearanceHeadline6"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@id/imageView"
-			app:layout_constraintTop_toTopOf="parent"
-			tools:text="Título do Card" />
-
-		<TextView
-			android:id="@+id/description"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="16dp"
-			android:layout_marginTop="4dp"
-			android:textAppearance="?attr/textAppearanceBody2"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toEndOf="@id/imageView"
-			app:layout_constraintTop_toBottomOf="@id/name"
-			tools:text="Descrição do card" />
-
-	</androidx.constraintlayout.widget.ConstraintLayout>
-
-</com.google.android.material.card.MaterialCardView>
+<com.example.customviewcookbook.features.components.banner.BannerHighlightView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/banner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:description="@string/dolores_perferendis_description"
+    app:hasRightButton="true"
+    app:title="@string/dolores_perferendis_title" />

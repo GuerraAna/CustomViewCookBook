@@ -86,6 +86,16 @@ class BannerHighlightView @JvmOverloads constructor(
         }
 
     /**
+     * Whether to show the close button.
+     * @see [R.styleable.BannerHighlightView_hasRightButton]
+     */
+    var hasRightButton: Boolean = false
+        set(value) {
+            field = value
+            updateRightButtonVisibility()
+        }
+
+    /**
      * The color of the border stroke. If null, a default color will be used.
      * @see [R.styleable.BannerHighlightView_strokeColor]
      */
@@ -140,8 +150,13 @@ class BannerHighlightView @JvmOverloads constructor(
             binding.progressIndicator.isVisible = true
         } else {
             binding.progressIndicator.isVisible = false
-            binding.icon.setImageDrawable(icon)
-            binding.icon.isVisible = true
+
+            if (icon != null ) {
+                binding.icon.setImageDrawable(icon)
+                binding.icon.isVisible = true
+            } else {
+                binding.icon.isVisible = false
+            }
         }
     }
 
@@ -156,6 +171,14 @@ class BannerHighlightView @JvmOverloads constructor(
         }
 
         binding.closeButton.isVisible = hasCloseButton
+    }
+
+    private fun updateRightButtonVisibility() {
+        if (hasRightButton) {
+            binding.rightButton.setOnClickListener { onCloseClickListener?.invoke() }
+        }
+
+        binding.rightButton.isVisible = hasRightButton
     }
 
     private fun updateStrokeColor() {

@@ -11,8 +11,7 @@ internal class FeaturesViewHolder(
         binding.root.setOnClickListener { listener.onFeatureClick(feature.activity) }
 
         val featureDetails = feature.featureDetails
-        binding.imageView.setImageResource(featureDetails.resourceId)
-        binding.name.text = featureDetails.name
-        binding.description.text = featureDetails.description
+        binding.banner.title = featureDetails.name
+        binding.banner.description = featureDetails.description
     }
 }
