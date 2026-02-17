@@ -1,0 +1,99 @@
+Index: .idea/shelf/Changes1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Changes1.xml b/.idea/shelf/Changes1.xml
+new file mode 100644
+--- /dev/null	(date 1769992069579)
++++ b/.idea/shelf/Changes1.xml	(date 1769992069579)
+@@ -0,0 +1,4 @@
++<changelist name="Changes1" date="1766970767123" recycled="false">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes1/shelved.patch" />
++  <option name="DESCRIPTION" value="Changes" />
++</changelist>
+\ No newline at end of file
+Index: .idea/deviceManager.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deviceManager.xml b/.idea/deviceManager.xml
+new file mode 100644
+--- /dev/null	(date 1769992069568)
++++ b/.idea/deviceManager.xml	(date 1769992069568)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DeviceTable">
++    <option name="columnSorters">
++      <list>
++        <ColumnSorterState>
++          <option name="column" value="Name" />
++          <option name="order" value="ASCENDING" />
++        </ColumnSorterState>
++      </list>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/shelf/Changes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Changes.xml b/.idea/shelf/Changes.xml
+new file mode 100644
+--- /dev/null	(date 1769992069555)
++++ b/.idea/shelf/Changes.xml	(date 1769992069555)
+@@ -0,0 +1,4 @@
++<changelist name="Changes" date="1766946520166" recycled="false">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/shelved.patch" />
++  <option name="DESCRIPTION" value="Changes" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/handle_error.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/handle_error.xml b/.idea/shelf/handle_error.xml
+new file mode 100644
+--- /dev/null	(date 1769992069529)
++++ b/.idea/shelf/handle_error.xml	(date 1769992069529)
+@@ -0,0 +1,4 @@
++<changelist name="handle_error" date="1766978914431" recycled="false">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/handle_error/shelved.patch" />
++  <option name="DESCRIPTION" value="handle error" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Changes5.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Changes5.xml b/.idea/shelf/Changes5.xml
+new file mode 100644
+--- /dev/null	(date 1769992069669)
++++ b/.idea/shelf/Changes5.xml	(date 1769992069669)
+@@ -0,0 +1,4 @@
++<changelist name="Changes5" date="1769886457660" recycled="false">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes5/shelved.patch" />
++  <option name="DESCRIPTION" value="Changes" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Changes3.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Changes3.xml b/.idea/shelf/Changes3.xml
+new file mode 100644
+--- /dev/null	(date 1769992069678)
++++ b/.idea/shelf/Changes3.xml	(date 1769992069678)
+@@ -0,0 +1,4 @@
++<changelist name="Changes3" date="1769468977999" recycled="false">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes3/shelved.patch" />
++  <option name="DESCRIPTION" value="Changes" />
++</changelist>
+\ No newline at end of file

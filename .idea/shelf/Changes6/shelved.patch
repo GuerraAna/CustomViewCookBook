@@ -1,0 +1,452 @@
+Index: .idea/shelf/handle_error.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/handle_error.xml b/.idea/shelf/handle_error.xml
+new file mode 100644
+--- /dev/null	(date 1766978957523)
++++ b/.idea/shelf/handle_error.xml	(date 1766978957523)
+@@ -0,0 +1,4 @@
++<changelist name="handle_error" date="1766978914431" recycled="false">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/handle_error/shelved.patch" />
++  <option name="DESCRIPTION" value="handle error" />
++</changelist>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest\r\n\txmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n\txmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n\t<application\r\n\t\tandroid:allowBackup=\"true\"\r\n\t\tandroid:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n\t\tandroid:fullBackupContent=\"@xml/backup_rules\"\r\n\t\tandroid:icon=\"@mipmap/ic_launcher\"\r\n\t\tandroid:label=\"@string/app_name\"\r\n\t\tandroid:roundIcon=\"@mipmap/ic_launcher_round\"\r\n\t\tandroid:supportsRtl=\"true\"\r\n\t\tandroid:theme=\"@style/Theme.CustomViewCookBook\">\r\n\t\t<activity\r\n\t\t\tandroid:name=\".features.navigation.registerForActivityResult.ThirdForResultActivity\"\r\n\t\t\tandroid:exported=\"false\" />\r\n\t\t<activity\r\n\t\t\tandroid:name=\".features.navigation.registerForActivityResult.SecondForResultActivity\"\r\n\t\t\tandroid:exported=\"false\" />\r\n\t\t<activity\r\n\t\t\tandroid:name=\".features.navigation.registerForActivityResult.FirstForResultActivity\"\r\n\t\t\tandroid:exported=\"false\" /> <!-- Home Feature. Responsible to initialize the application. -->\r\n\t\t<activity\r\n\t\t\tandroid:name=\".home.HomeActivity\"\r\n\t\t\tandroid:exported=\"true\">\r\n\t\t\t<intent-filter>\r\n\t\t\t\t<action android:name=\"android.intent.action.MAIN\" />\r\n\r\n\t\t\t\t<category android:name=\"android.intent.category.LAUNCHER\" />\r\n\t\t\t</intent-filter>\r\n\t\t</activity> <!-- Banner Feature. -->\r\n\t\t<activity\r\n\t\t\tandroid:name=\".features.components.banner.simple.BannerActivity\"\r\n\t\t\tandroid:exported=\"false\" /> <!-- Intent Activities Feature. -->\r\n\t\t<activity\r\n\t\t\tandroid:name=\".features.navigation.startActivityForResullt.FirstActivity\"\r\n\t\t\tandroid:exported=\"false\" />\r\n\t\t<activity\r\n\t\t\tandroid:name=\".features.navigation.startActivityForResullt.SecondActivity\"\r\n\t\t\tandroid:exported=\"false\" />\r\n\t\t<activity\r\n\t\t\tandroid:name=\".features.navigation.startActivityForResullt.ThirdActivity\"\r\n\t\t\tandroid:exported=\"false\" />\r\n\t</application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 476b1be68274dadd0375d90d0fbd57366fe36378)
++++ b/app/src/main/AndroidManifest.xml	(date 1769991272290)
+@@ -13,6 +13,9 @@
+ 		android:supportsRtl="true"
+ 		android:theme="@style/Theme.CustomViewCookBook">
+ 		<activity
++			android:name=".features.components.banner.dropdown.DropDownActivity"
++			android:exported="false" />
++		<activity
+ 			android:name=".features.navigation.registerForActivityResult.ThirdForResultActivity"
+ 			android:exported="false" />
+ 		<activity
+Index: .idea/shelf/Changes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Changes.xml b/.idea/shelf/Changes.xml
+new file mode 100644
+--- /dev/null	(date 1766946521590)
++++ b/.idea/shelf/Changes.xml	(date 1766946521590)
+@@ -0,0 +1,4 @@
++<changelist name="Changes" date="1766946520166" recycled="false">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/shelved.patch" />
++  <option name="DESCRIPTION" value="Changes" />
++</changelist>
+\ No newline at end of file
+Index: .idea/deviceManager.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deviceManager.xml b/.idea/deviceManager.xml
+new file mode 100644
+--- /dev/null	(date 1769821187610)
++++ b/.idea/deviceManager.xml	(date 1769821187610)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DeviceTable">
++    <option name="columnSorters">
++      <list>
++        <ColumnSorterState>
++          <option name="column" value="Name" />
++          <option name="order" value="ASCENDING" />
++        </ColumnSorterState>
++      </list>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/shelf/Changes1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Changes1.xml b/.idea/shelf/Changes1.xml
+new file mode 100644
+--- /dev/null	(date 1766972944670)
++++ b/.idea/shelf/Changes1.xml	(date 1766972944670)
+@@ -0,0 +1,4 @@
++<changelist name="Changes1" date="1766970767123" recycled="false">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes1/shelved.patch" />
++  <option name="DESCRIPTION" value="Changes" />
++</changelist>
+\ No newline at end of file
+Index: app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/DropdownAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/DropdownAdapter.kt b/app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/DropdownAdapter.kt
+new file mode 100644
+--- /dev/null	(date 1769991613398)
++++ b/app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/DropdownAdapter.kt	(date 1769991613398)
+@@ -0,0 +1,36 @@
++package com.example.customviewcookbook.features.components.banner.dropdown
++
++import android.view.LayoutInflater
++import android.view.ViewGroup
++import androidx.recyclerview.widget.RecyclerView
++import com.example.customviewcookbook.databinding.ItemDropdownBinding
++
++internal class DropdownAdapter(
++    private val items: List<String>,
++    private val onItemClick: (position: Int, item: String) -> Unit
++) : RecyclerView.Adapter<DropdownAdapter.ViewHolder>() {
++
++    inner class ViewHolder(private val binding: ItemDropdownBinding) :
++        RecyclerView.ViewHolder(binding.root) {
++
++        fun bind(item: String, position: Int) {
++            binding.itemText.text = item
++            binding.root.setOnClickListener {
++                onItemClick(position, item)
++            }
++        }
++    }
++
++    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
++        val binding = ItemDropdownBinding.inflate(
++                LayoutInflater.from(parent.context), parent, false
++        )
++        return ViewHolder(binding)
++    }
++
++    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
++        holder.bind(items[position], position)
++    }
++
++    override fun getItemCount() = items.size
++}
+Index: app/src/main/res/drawable/ic_arrow_down.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_arrow_down.xml b/app/src/main/res/drawable/ic_arrow_down.xml
+new file mode 100644
+--- /dev/null	(date 1769991521763)
++++ b/app/src/main/res/drawable/ic_arrow_down.xml	(date 1769991521763)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++	xmlns:android="http://schemas.android.com/apk/res/android"
++	android:width="24dp"
++	android:height="24dp"
++	android:viewportWidth="24"
++	android:viewportHeight="24">
++
++	<path
++		android:fillColor="@android:color/transparent"
++		android:pathData="M6,9 L12,15 L18,9"
++		android:strokeWidth="2"
++		android:strokeColor="@android:color/black"
++		android:strokeLineCap="round"
++		android:strokeLineJoin="round" />
++
++</vector>
+\ No newline at end of file
+Index: app/src/main/res/layout/item_dropdown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_dropdown.xml b/app/src/main/res/layout/item_dropdown.xml
+new file mode 100644
+--- /dev/null	(date 1769991613409)
++++ b/app/src/main/res/layout/item_dropdown.xml	(date 1769991613409)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?>
++<TextView
++	xmlns:android="http://schemas.android.com/apk/res/android"
++	xmlns:tools="http://schemas.android.com/tools"
++	android:id="@+id/itemText"
++	android:layout_width="match_parent"
++	android:layout_height="wrap_content"
++	android:background="?attr/selectableItemBackground"
++	android:gravity="center_vertical"
++	android:padding="16dp"
++	android:textSize="16sp"
++	tools:text="Titulo do dropdown" />
++
+Index: app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/DropDownActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/DropDownActivity.kt b/app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/DropDownActivity.kt
+new file mode 100644
+--- /dev/null	(date 1769991320102)
++++ b/app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/DropDownActivity.kt	(date 1769991320102)
+@@ -0,0 +1,31 @@
++package com.example.customviewcookbook.features.components.banner.dropdown
++
++import android.os.Bundle
++import androidx.activity.enableEdgeToEdge
++import androidx.appcompat.app.AppCompatActivity
++import androidx.core.view.ViewCompat
++import androidx.core.view.WindowInsetsCompat
++import com.example.customviewcookbook.R
++import com.example.customviewcookbook.databinding.ActivityDropDownBinding
++
++internal class DropDownActivity : AppCompatActivity() {
++
++    private val binding: ActivityDropDownBinding by lazy {
++        ActivityDropDownBinding.inflate(layoutInflater)
++    }
++
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        enableEdgeToEdge()
++        setContentView(binding.root)
++        setupWindowInsets()
++    }
++
++    private fun setupWindowInsets() {
++        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
++            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
++            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
++            insets
++        }
++    }
++}
+Index: app/src/main/res/layout/activity_drop_down.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_drop_down.xml b/app/src/main/res/layout/activity_drop_down.xml
+new file mode 100644
+--- /dev/null	(date 1769991734977)
++++ b/app/src/main/res/layout/activity_drop_down.xml	(date 1769991734977)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++	xmlns:android="http://schemas.android.com/apk/res/android"
++	xmlns:app="http://schemas.android.com/apk/res-auto"
++	xmlns:tools="http://schemas.android.com/tools"
++	android:id="@+id/main"
++	android:layout_width="match_parent"
++	android:layout_height="match_parent"
++	tools:context=".features.components.banner.dropdown.DropDownActivity">
++
++	<com.example.customviewcookbook.features.components.banner.dropdown.CustomDropdownView
++		android:id="@+id/customDropdown"
++		android:layout_width="match_parent"
++		android:layout_height="wrap_content"
++		android:layout_margin="24dp"
++		app:layout_constraintEnd_toEndOf="parent"
++		app:layout_constraintStart_toStartOf="parent"
++		app:layout_constraintTop_toTopOf="parent" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/res/layout/view_custom_dropdown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/view_custom_dropdown.xml b/app/src/main/res/layout/view_custom_dropdown.xml
+new file mode 100644
+--- /dev/null	(date 1769991521774)
++++ b/app/src/main/res/layout/view_custom_dropdown.xml	(date 1769991521774)
+@@ -0,0 +1,43 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++	xmlns:android="http://schemas.android.com/apk/res/android"
++	xmlns:app="http://schemas.android.com/apk/res-auto"
++	android:layout_width="match_parent"
++	android:layout_height="wrap_content">
++
++	<!-- Header do dropdown -->
++	<LinearLayout
++		android:id="@+id/dropdownHeader"
++		android:layout_width="match_parent"
++		android:layout_height="48dp"
++		android:background="?attr/selectableItemBackground"
++		android:orientation="horizontal"
++		android:padding="12dp"
++		app:layout_constraintTop_toTopOf="parent">
++
++		<TextView
++			android:id="@+id/dropdownSelectedText"
++			android:layout_width="0dp"
++			android:layout_height="wrap_content"
++			android:layout_weight="1"
++			android:text="Selecione uma opção"
++			android:textSize="16sp" />
++
++		<ImageView
++			android:id="@+id/dropdownArrow"
++			android:layout_width="24dp"
++			android:layout_height="24dp"
++			android:src="@drawable/ic_arrow_down" />
++	</LinearLayout>
++
++	<!-- Lista de itens -->
++	<androidx.recyclerview.widget.RecyclerView
++		android:id="@+id/dropdownRecyclerView"
++		android:layout_width="match_parent"
++		android:layout_height="wrap_content"
++		android:background="@android:color/white"
++		android:elevation="4dp"
++		android:maxHeight="200dp"
++		app:layout_constraintTop_toBottomOf="@id/dropdownHeader" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/CustomDropdownView.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/CustomDropdownView.kt b/app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/CustomDropdownView.kt
+new file mode 100644
+--- /dev/null	(date 1769991521785)
++++ b/app/src/main/java/com/example/customviewcookbook/features/components/banner/dropdown/CustomDropdownView.kt	(date 1769991521785)
+@@ -0,0 +1,87 @@
++package com.example.customviewcookbook.features.components.banner.dropdown
++
++import android.content.Context
++import android.util.AttributeSet
++import android.view.LayoutInflater
++import android.view.View
++import android.widget.FrameLayout
++import androidx.recyclerview.widget.LinearLayoutManager
++import com.example.customviewcookbook.databinding.ViewCustomDropdownBinding
++
++internal class CustomDropdownView @JvmOverloads constructor(
++    context: Context,
++    attrs: AttributeSet? = null,
++    defStyleAttr: Int = 0
++) : FrameLayout(context, attrs, defStyleAttr) {
++
++    private var binding: ViewCustomDropdownBinding
++    private var items: List<String> = emptyList()
++    private var selectedPosition: Int = -1
++    private var onItemSelectedListener: ((position: Int, item: String) -> Unit)? = null
++    
++    private var isExpanded = false
++
++    init {
++        binding = ViewCustomDropdownBinding.inflate(LayoutInflater.from(context), this, true)
++        setupViews()
++    }
++
++    private fun setupViews() {
++        binding.dropdownHeader.setOnClickListener {
++            toggleDropdown()
++        }
++        
++        binding.dropdownRecyclerView.layoutManager = LinearLayoutManager(context)
++        binding.dropdownRecyclerView.visibility = View.GONE
++    }
++
++    private fun toggleDropdown() {
++        isExpanded = !isExpanded
++        
++        if (isExpanded) {
++            expandDropdown()
++        } else {
++            collapseDropdown()
++        }
++    }
++
++    private fun expandDropdown() {
++        binding.dropdownRecyclerView.visibility = View.VISIBLE
++        // Anima a rotação do ícone de seta
++        binding.dropdownArrow.animate()
++            .rotation(180f)
++            .setDuration(300)
++            .start()
++    }
++
++    private fun collapseDropdown() {
++        binding.dropdownRecyclerView.visibility = View.GONE
++        binding.dropdownArrow.animate()
++            .rotation(0f)
++            .setDuration(300)
++            .start()
++    }
++
++    fun setItems(items: List<String>) {
++        this.items = items
++        val adapter = DropdownAdapter(items) { position, item ->
++            selectItem(position, item)
++        }
++        binding.dropdownRecyclerView.adapter = adapter
++    }
++
++    private fun selectItem(position: Int, item: String) {
++        selectedPosition = position
++        binding.dropdownSelectedText.text = item
++        collapseDropdown()
++        onItemSelectedListener?.invoke(position, item)
++    }
++
++    fun setOnItemSelectedListener(listener: (position: Int, item: String) -> Unit) {
++        onItemSelectedListener = listener
++    }
++
++    fun getSelectedItem(): String? {
++        return if (selectedPosition >= 0) items[selectedPosition] else null
++    }
++}
+Index: .idea/shelf/Changes5.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Changes5.xml b/.idea/shelf/Changes5.xml
+new file mode 100644
+--- /dev/null	(date 1769886467354)
++++ b/.idea/shelf/Changes5.xml	(date 1769886467354)
+@@ -0,0 +1,4 @@
++<changelist name="Changes5" date="1769886457660" recycled="false">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes5/shelved.patch" />
++  <option name="DESCRIPTION" value="Changes" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Changes3.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Changes3.xml b/.idea/shelf/Changes3.xml
+new file mode 100644
+--- /dev/null	(date 1769468995662)
++++ b/.idea/shelf/Changes3.xml	(date 1769468995662)
+@@ -0,0 +1,4 @@
++<changelist name="Changes3" date="1769468977999" recycled="false">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes3/shelved.patch" />
++  <option name="DESCRIPTION" value="Changes" />
++</changelist>
+\ No newline at end of file
+diff --git a/app/src/main/java/com/example/customviewcookbook/features/item/FeaturesAdapter.kt b/app/src/main/java/com/example/customviewcookbook/features/feature/FeaturesAdapter.kt
+rename from app/src/main/java/com/example/customviewcookbook/features/item/FeaturesAdapter.kt
+rename to app/src/main/java/com/example/customviewcookbook/features/feature/FeaturesAdapter.kt
+diff --git a/app/src/main/java/com/example/customviewcookbook/features/item/FeaturesResponse.kt b/app/src/main/java/com/example/customviewcookbook/features/feature/FeaturesResponse.kt
+rename from app/src/main/java/com/example/customviewcookbook/features/item/FeaturesResponse.kt
+rename to app/src/main/java/com/example/customviewcookbook/features/feature/FeaturesResponse.kt
+diff --git a/app/src/main/java/com/example/customviewcookbook/features/item/FeaturesViewHolder.kt b/app/src/main/java/com/example/customviewcookbook/features/feature/FeaturesViewHolder.kt
+rename from app/src/main/java/com/example/customviewcookbook/features/item/FeaturesViewHolder.kt
+rename to app/src/main/java/com/example/customviewcookbook/features/feature/FeaturesViewHolder.kt
+diff --git a/app/src/main/java/com/example/customviewcookbook/features/item/Feature.kt b/app/src/main/java/com/example/customviewcookbook/features/feature/Feature.kt
+rename from app/src/main/java/com/example/customviewcookbook/features/item/Feature.kt
+rename to app/src/main/java/com/example/customviewcookbook/features/feature/Feature.kt
+diff --git a/app/src/main/java/com/example/customviewcookbook/features/item/FeatureDetails.kt b/app/src/main/java/com/example/customviewcookbook/features/feature/FeatureDetails.kt
+rename from app/src/main/java/com/example/customviewcookbook/features/item/FeatureDetails.kt
+rename to app/src/main/java/com/example/customviewcookbook/features/feature/FeatureDetails.kt
