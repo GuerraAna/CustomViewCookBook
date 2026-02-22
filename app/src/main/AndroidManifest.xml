@@ -24,7 +24,7 @@
 			</intent-filter>
 		</activity>
 
-		<!--  Banner Feature.  -->kkkk
+		<!--  Banner Feature.  -->
 		<activity
 			android:name=".features.components.banner.BannerActivity"
 			android:exported="false" />
