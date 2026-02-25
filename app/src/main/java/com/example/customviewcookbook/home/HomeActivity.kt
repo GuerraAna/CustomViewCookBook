@@ -64,35 +64,8 @@ internal class HomeActivity :
     }
 
     private fun setupListeners() {
-//        val boomAnim = AnimationUtils.loadAnimation(this, R.anim.boom_button)
-//        binding.footer.text = "Abrir a documentação do Material"
-//
-//        binding.footer.setOnClickListener {
-//            lifecycleScope.launch {
-//                it.startAnimation(boomAnim)
-//                delay(boomAnim.duration)
-//                onMainActionClicked()
-//            }
-//        }
-
-        val boomAnim = AnimationUtils.loadAnimation(this, R.anim.boom_button)
-        binding.footer.text = "Abrir a documentação do Material"
-
-        val scaleAnimator = AnimatorInflater.loadAnimator(
-            this,
-            R.animator.btn_click_scale
-        )
-
-        binding.footer.setOnClickListener { view ->
-            lifecycleScope.launch {
-                scaleAnimator.setTarget(view)
-                scaleAnimator.start()
-                vibrateClick()
-//                it.startAnimation(boomAnim)
-                delay(boomAnim.duration)
-//                onMainActionClicked()
-            }
-        }
+        binding.footer.mainButtonListener = { onMainActionClicked() }
+        binding.footer.mainButtonText = "Abrir a documentação do Material"
     }
 
     private fun onMainActionClicked() {
