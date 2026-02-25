@@ -1,9 +1,11 @@
 package com.example.customviewcookbook.home
 
+import android.animation.AnimatorInflater
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,10 +19,12 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.customviewcookbook.R
 import com.example.customviewcookbook.features.components.button.CustomFooterView
+import com.example.customviewcookbook.features.components.button.vibrateClick
 import com.example.customviewcookbook.features.item.Feature
 import com.example.customviewcookbook.features.item.FeaturesAdapter
 import com.example.customviewcookbook.features.item.FeaturesResponse
 import com.example.customviewcookbook.features.item.FeaturesAdapter.FeatureClickListener
+import kotlinx.coroutines.delay
 
 /**
  *

@@ -1,37 +1,37 @@
 <resources>
-	<string name="app_name">CustomViewCookBook</string>
+    <string name="app_name">CustomViewCookBook</string>
 
-	<string name="dolores_perferendis_title">Dolores perferendis laboriosam deleniti</string>
-	<string name="dolores_perferendis_description">Dolores perferendis laboriosam deleniti est illo rerum alias. Facere voluptate dolorum eum ut itaque repudiandae. Atque nam aut totam. Consequatur tempora sit autem rem id qui iusto. Qui ut nostrum voluptas quis.</string>
+    <string name="dolores_perferendis_title">Dolores perferendis laboriosam deleniti</string>
+    <string name="dolores_perferendis_description">Dolores perferendis laboriosam deleniti est illo rerum alias. Facere voluptate dolorum eum ut itaque repudiandae. Atque nam aut totam. Consequatur tempora sit autem rem id qui iusto. Qui ut nostrum voluptas quis.</string>
 
-	<string name="banner_initialize_counter_title">Iniciando a Contagem…</string>
-	<string name="banner_initialize_counter_description">A contagem começará em breve.</string>
-	<string name="banner_start_counter_title">Contando…</string>
-	<string name="banner_start_counter_description">Total de itens incluidos (%1$d/%2$d)</string>
-	<string name="banner_success_title">Concluído!</string>
-	<string name="banner_success_description">A contagem terminou com sucesso.</string>
-	<string name="banner_error_title">Ocorreu um erro!</string>
-	<string name="banner_error_description">Desculpe, ocorreu um erro durante a contagem. Tente novamente mais tarde ou entre em contato com o responsável por este produto.</string>
-	<string name="close_content_description">fechar</string>
-	<string name="simulate_counter_error">simular erro na contagem</string>
-	<string name="simulate_counter_start">simular reinicio da contagem</string>
+    <string name="banner_initialize_counter_title">Iniciando a Contagem…</string>
+    <string name="banner_initialize_counter_description">A contagem começará em breve.</string>
+    <string name="banner_start_counter_title">Contando…</string>
+    <string name="banner_start_counter_description">Total de itens incluidos (%1$d/%2$d)</string>
+    <string name="banner_success_title">Concluído!</string>
+    <string name="banner_success_description">A contagem terminou com sucesso.</string>
+    <string name="banner_error_title">Ocorreu um erro!</string>
+    <string name="banner_error_description">Desculpe, ocorreu um erro durante a contagem. Tente novamente mais tarde ou entre em contato com o responsável por este produto.</string>
+    <string name="close_content_description">fechar</string>
+    <string name="simulate_counter_error">simular erro na contagem</string>
+    <string name="simulate_counter_start">simular reinicio da contagem</string>
 
-	<string name="home_title">Titulo do conteúdo da tela.</string>
+    <string name="home_title">Titulo do conteúdo da tela.</string>
 
-	<!--  Navigaton	-->
-	<string name="input_value_text">Digite um valor…</string>
+    <!--  Navigaton	-->
+    <string name="input_value_text">Digite um valor…</string>
 
-	<!--  First Navigation	-->
-	<string name="go_to_second_screen">Ir para a segunda tela</string>
-	<string name="total_text_result">Primeiro: %1$s Segundo: %2$s Terceiro: %3$s</string>
+    <!--  First Navigation	-->
+    <string name="go_to_second_screen">Ir para a segunda tela</string>
+    <string name="total_text_result">Primeiro: %1$s Segundo: %2$s Terceiro: %3$s</string>
 
-	<!--  Second Navigation -->
-	<string name="second_screen_input_third_texts_result">Texto da segunda tela: %1$s. Resultado da terceira tela: %2$s</string>
+    <!--  Second Navigation -->
+    <string name="second_screen_input_third_texts_result">Texto da segunda tela: %1$s. Resultado da terceira tela: %2$s</string>
 
-	<string name="third_screen_text_input_result"> Texto da <b>TERCEIRA</b> tela: $1%</string>
-	<string name="first_screen_text_input_intent"> Texto da <b>PRIMEIRA</b> tela: $1%</string>
+    <string name="third_screen_text_input_result"> Texto da <b>TERCEIRA</b> tela: $1%</string>
+    <string name="first_screen_text_input_intent"> Texto da <b>PRIMEIRA</b> tela: $1%</string>
 
-	<string name="continue_to_third_screen">Continuar para a terceira Tela</string>
-	<string name="third_first_text">Valor da <b>primeira</b> tela: %1$</string>
-	<string name="third_second_text">Valor da <b>segunda</b> tela: %1$</string>
+    <string name="continue_to_third_screen">Continuar para a terceira Tela</string>
+    <string name="third_first_text">Valor da <b>primeira</b> tela: %1$</string>
+    <string name="third_second_text">Valor da <b>segunda</b> tela: %1$</string>
 </resources>

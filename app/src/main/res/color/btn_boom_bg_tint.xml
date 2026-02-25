@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Pressionado -->
+    <item
+        android:state_pressed="true"
+        android:color="@color/teal_700" />
+
+    <!-- Desabilitado (opcional) -->
+    <item
+        android:state_enabled="false"
+        android:color="#BDBDBD" />
+
+    <!-- Default -->
+    <item
+        android:color="@color/teal_200" />
+</selector>
