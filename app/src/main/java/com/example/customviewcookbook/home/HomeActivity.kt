@@ -19,6 +19,7 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.customviewcookbook.R
 import com.example.customviewcookbook.features.components.button.CustomFooterView
+import com.example.customviewcookbook.features.components.button.vibrateClick
 import com.example.customviewcookbook.features.item.Feature
 import com.example.customviewcookbook.features.item.FeaturesAdapter
 import com.example.customviewcookbook.features.item.FeaturesResponse
@@ -86,6 +87,7 @@ internal class HomeActivity :
             lifecycleScope.launch {
                 scaleAnimator.setTarget(view)
                 scaleAnimator.start()
+                vibrateClick()
 //                it.startAnimation(boomAnim)
                 delay(boomAnim.duration)
 //                onMainActionClicked()
