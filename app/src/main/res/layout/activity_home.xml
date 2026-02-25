@@ -72,13 +72,36 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.example.customviewcookbook.features.components.button.CustomFooterView
+    <!--    <com.example.customviewcookbook.features.components.button.CustomFooterView-->
+    <!--        android:id="@+id/footer"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        tools:mainButtonText="Abrir a documentação do Material" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/footer"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:stateListAnimator="@animator/button_press_scale"-->
+<!--        android:textColor="@color/btn_boom_text_color"-->
+<!--        app:backgroundTint="@color/btn_boom_bg_tint"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        tools:text="Boom" />-->
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/footer"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Clique aqui"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:mainButtonText="Abrir a documentação do Material" />
+        android:background="@drawable/bg_button_ripple"
+        android:stateListAnimator="@animator/btn_click_elevation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

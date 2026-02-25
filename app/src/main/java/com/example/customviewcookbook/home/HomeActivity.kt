@@ -1,9 +1,11 @@
 package com.example.customviewcookbook.home
 
+import android.animation.AnimatorInflater
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,7 @@ import com.example.customviewcookbook.features.item.Feature
 import com.example.customviewcookbook.features.item.FeaturesAdapter
 import com.example.customviewcookbook.features.item.FeaturesResponse
 import com.example.customviewcookbook.features.item.FeaturesAdapter.FeatureClickListener
+import kotlinx.coroutines.delay
 
 /**
  *
@@ -60,8 +63,34 @@ internal class HomeActivity :
     }
 
     private fun setupListeners() {
-        binding.footer.mainButtonListener = { onMainActionClicked() }
-        binding.footer.mainButtonText = "Abrir a documentação do Material"
+//        val boomAnim = AnimationUtils.loadAnimation(this, R.anim.boom_button)
+//        binding.footer.text = "Abrir a documentação do Material"
+//
+//        binding.footer.setOnClickListener {
+//            lifecycleScope.launch {
+//                it.startAnimation(boomAnim)
+//                delay(boomAnim.duration)
+//                onMainActionClicked()
+//            }
+//        }
+
+        val boomAnim = AnimationUtils.loadAnimation(this, R.anim.boom_button)
+        binding.footer.text = "Abrir a documentação do Material"
+
+        val scaleAnimator = AnimatorInflater.loadAnimator(
+            this,
+            R.animator.btn_click_scale
+        )
+
+        binding.footer.setOnClickListener { view ->
+            lifecycleScope.launch {
+                scaleAnimator.setTarget(view)
+                scaleAnimator.start()
+//                it.startAnimation(boomAnim)
+                delay(boomAnim.duration)
+//                onMainActionClicked()
+            }
+        }
     }
 
     private fun onMainActionClicked() {
