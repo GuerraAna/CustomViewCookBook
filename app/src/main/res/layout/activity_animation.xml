@@ -10,23 +10,36 @@
     tools:context=".features.animation.AnimationActivity">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/footer_first"
+        android:id="@+id/footer_boom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_ripple"
         android:stateListAnimator="@animator/button_press_scale"
-        android:text="Aqui tem Bom em!"
+        android:text="Aqui tem Boom em!"
         android:textAllCaps="false"
         android:textColor="@color/btn_boom_text_color"
         app:backgroundTint="@color/btn_boom_bg_tint" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/footer_vibration"
+        android:id="@+id/footer_simple_vibration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/bg_button_ripple"
         android:stateListAnimator="@animator/btn_click_elevation"
         android:text="Aqui vibra leve em!"
+        android:textAllCaps="false"
+        android:textColor="@color/btn_boom_text_color"
+        app:backgroundTint="@color/btn_boom_bg_tint" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/footer_hard_vibration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_button_ripple"
+        android:stateListAnimator="@animator/btn_click_elevation"
+        android:text="Aqui vibra muito forte em!"
         android:textAllCaps="false"
         android:textColor="@color/btn_boom_text_color"
         app:backgroundTint="@color/btn_boom_bg_tint" />
