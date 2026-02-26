@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
  */
 internal class AnimationActivity : AppCompatActivity() {
 
-    private var isRotationButton = false
+    private var hasRotationButtonAction = false
 
     private val binding: ActivityAnimationBinding by lazy {
         ActivityAnimationBinding.inflate(layoutInflater)
@@ -81,17 +81,17 @@ internal class AnimationActivity : AppCompatActivity() {
 
     private fun setupRotateListener() {
         binding.footerRotate.setOnClickListener { view ->
-            if (!isRotationButton) {
+            if (!hasRotationButtonAction) {
                 view.animate()
                     .rotationBy(360f)
                     .setDuration(3000)
-                    .withEndAction { isRotationButton = true }
+                    .withEndAction { hasRotationButtonAction = true }
                     .start()
             } else {
                 view.animate()
                     .rotationBy(-360f)
                     .setDuration(3000)
-                    .withEndAction { isRotationButton = false }
+                    .withEndAction { hasRotationButtonAction = false }
                     .start()
             }
         }
