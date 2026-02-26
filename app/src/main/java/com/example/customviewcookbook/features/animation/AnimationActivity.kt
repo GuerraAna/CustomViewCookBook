@@ -2,8 +2,6 @@ package com.example.customviewcookbook.features.animation
 
 import android.animation.AnimatorInflater
 import android.os.Bundle
-import android.os.VibrationEffect
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +21,8 @@ import kotlinx.coroutines.launch
  */
 internal class AnimationActivity : AppCompatActivity() {
 
+    private var isRotationButton = false
+
     private val binding: ActivityAnimationBinding by lazy {
         ActivityAnimationBinding.inflate(layoutInflater)
     }
@@ -39,6 +39,7 @@ internal class AnimationActivity : AppCompatActivity() {
         setupBoomListener()
         setupVibrateListener()
         setupSoundListener()
+        setupRotateListener()
     }
 
     private fun setupWindowInsets() {
@@ -75,6 +76,24 @@ internal class AnimationActivity : AppCompatActivity() {
     private fun setupSoundListener() {
         binding.footerSound.setOnClickListener {
             playSoundFromAssets("click-sound.mp3")
+        }
+    }
+
+    private fun setupRotateListener() {
+        binding.footerRotate.setOnClickListener { view ->
+            if (!isRotationButton) {
+                view.animate()
+                    .rotationBy(360f)
+                    .setDuration(3000)
+                    .withEndAction { isRotationButton = true }
+                    .start()
+            } else {
+                view.animate()
+                    .rotationBy(-360f)
+                    .setDuration(3000)
+                    .withEndAction { isRotationButton = false }
+                    .start()
+            }
         }
     }
 }

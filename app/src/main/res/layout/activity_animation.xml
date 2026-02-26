@@ -63,6 +63,18 @@
             android:textAllCaps="false"
             android:textColor="@color/btn_boom_text_color"
             app:backgroundTint="@color/btn_boom_bg_tint" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/footer_rotate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_button_ripple"
+            android:text="Aqui to Virando em!"
+            android:textAllCaps="false"
+            app:backgroundTint="@color/btn_boom_bg_tint"
+            android:textColor="@color/btn_boom_text_color" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
