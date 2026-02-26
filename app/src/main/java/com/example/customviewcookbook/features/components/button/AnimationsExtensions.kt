@@ -1,6 +1,8 @@
 package com.example.customviewcookbook.features.components.button
 
 import android.content.Context
+import android.media.MediaPlayer
+import java.io.IOException
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -37,4 +39,25 @@ internal fun Context.vibrateClick() {
     }
 
     Log.d("Vibrate", "Vibração disparada!")
+}
+
+/**
+ * Plays a sound from assets, expects the context of the caller.
+ */
+fun Context.playSoundFromAssets(soundPath: String) {
+    try {
+        val mp = MediaPlayer()
+        val afd = assets.openFd(soundPath)
+        mp.setDataSource(
+            afd.fileDescriptor,
+            afd.startOffset,
+            afd.length
+        )
+        afd.close()
+        mp.prepare()
+        mp.start()
+        mp.setOnCompletionListener { it.release() }
+    } catch (e: IOException) {
+        e.printStackTrace()
+    }
 }

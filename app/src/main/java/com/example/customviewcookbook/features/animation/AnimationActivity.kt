@@ -1,6 +1,7 @@
 package com.example.customviewcookbook.features.animation
 
 import android.animation.AnimatorInflater
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
@@ -10,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.customviewcookbook.R
 import com.example.customviewcookbook.databinding.ActivityAnimationBinding
+import com.example.customviewcookbook.features.components.button.playSoundFromAssets
 import com.example.customviewcookbook.features.components.button.vibrateClick
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -56,6 +58,10 @@ internal class AnimationActivity : AppCompatActivity() {
                 vibrateClick()
                 delay(boomAnim.duration)
             }
+        }
+
+        binding.footerSound.setOnClickListener {
+            playSoundFromAssets("click-sound.mp3")
         }
     }
 }

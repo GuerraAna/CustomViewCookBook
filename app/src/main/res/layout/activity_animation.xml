@@ -1,35 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
     tools:context=".features.animation.AnimationActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/footer_first"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:stateListAnimator="@animator/button_press_scale"
-        android:text="Clique aqui"
+        android:text="Aqui tem Bom em!"
+        android:textAllCaps="false"
         android:textColor="@color/btn_boom_text_color"
-        app:backgroundTint="@color/btn_boom_bg_tint"
-        app:layout_constraintBottom_toTopOf="@id/footer_vibration"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:backgroundTint="@color/btn_boom_bg_tint" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/footer_vibration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_button_ripple"
         android:stateListAnimator="@animator/btn_click_elevation"
-        android:text="Clique aqui"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="Aqui vibra leve em!"
+        android:textAllCaps="false"
+        android:textColor="@color/btn_boom_text_color"
+        app:backgroundTint="@color/btn_boom_bg_tint" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/footer_sound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_button_ripple"
+        android:stateListAnimator="@animator/btn_click_elevation"
+        android:text="Aqui tem Som em!"
+        android:textAllCaps="false"
+        android:textColor="@color/btn_boom_text_color"
+        app:backgroundTint="@color/btn_boom_bg_tint" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

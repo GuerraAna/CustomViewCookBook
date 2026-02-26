@@ -27,7 +27,7 @@ internal enum class Feature(
     ANIMATION(
         activity = AnimationActivity::class.java,
         featureDetails = FeatureDetails(
-            name = "Animções em componentes do Android",
+            name = "Animações em componentes do Android",
             description = "Exemplo de uso de animações em componentes do Android"
         )
     )
