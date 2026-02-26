@@ -42,14 +42,14 @@ internal class AnimationActivity : AppCompatActivity() {
     }
 
     private fun setupWindowInsets() {
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
     }
 
-    private fun setupBoomListener(): Animation? {
+    private fun setupBoomListener() {
         val boomAnim = AnimationUtils.loadAnimation(this, R.anim.boom_button)
 
         val scaleAnimator = AnimatorInflater.loadAnimator(
@@ -65,7 +65,6 @@ internal class AnimationActivity : AppCompatActivity() {
                 delay(boomAnim.duration)
             }
         }
-        return boomAnim
     }
 
     private fun setupVibrateListener() {

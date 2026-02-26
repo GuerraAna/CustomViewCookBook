@@ -13,19 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomViewCookBook">
-        <activity
-            android:name=".features.animation.AnimationActivity"
-            android:exported="false" />
+
         <!-- Home Feature. Responsible to initialize the application. -->
         <activity
             android:name=".home.HomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- Banner Feature. -->
+            android:exported="true"/>
+        <!-- Banner Feature. -->
         <activity
             android:name=".features.components.banner.BannerActivity"
             android:exported="false" /> <!-- Intent Activities Feature. -->
@@ -38,6 +31,16 @@
         <activity
             android:name=".features.navigation.ThirdActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".features.animation.AnimationActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
